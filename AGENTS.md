@@ -199,6 +199,10 @@ Decisions from Rose:
 - Whether: previous → Still (disabled until its page exists), next → Mitchie Matcha. Feature buttons switch the embedded demo (whether-demo.vercel.app#home/#digitize/#personalize/#closet); up/down buttons step through features. The demo is loaded with `?embed=1` (source: ~/Desktop/clothing-demo/web, deployed to Vercel as whether-demo): phone only, transparent page, no reset pill; it posts `whether-demo:pointer` {x, y} to the parent so the pink square keeps following over the phone.
 - Problem collages are flattened images; quote bubbles are live text laid over them.
 - Repo: github.com/omnomrose/rosefolio-26 (Rose pushes; Claude's GitHub app isn't installed on it).
+- Mitchie Matcha (973:19999 / 973:20089 / 973:20168): one page, three tabs (`meta.navigation: "tabs"`). The side nav switches tabs (URL hash = tab id); header details (415:3331 / 754:1048 / 767:1460) and image grid swap per tab; CONTEXT is shared. "/METRICS" dropped from the first tab label until metrics exist. Previous → Whether, next → AR Glasses.
+- One header size for every case study (Whether's): hero 999 × 413, 172px title column, 668px details row.
+- Case study images are Figma's own 2x PNG renders of each image layer (crops + image adjustments baked in), converted to WebP. The 20 Mitchie layers carry 2x PNG export settings; `public/images/work/mitchie-matcha/_figma-export/convert.py` maps layer names → WebP files.
+- AR Glasses for Retail: placeholder page in the case study shell (nav "Coming soon", empty panel).
 
 ## 10. Open questions
 
