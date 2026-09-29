@@ -107,7 +107,7 @@ export default function VinylPlayer() {
                   width={420}
                   height={420}
                   priority
-                  className="absolute top-[-4.76%] left-[-4.76%] size-[109.52%] max-w-none"
+                  className="absolute inset-0 size-full"
                 />
               </div>
             </div>

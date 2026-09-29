@@ -15,7 +15,7 @@ export const tracks: Track[] = [
     artist: "PinkPantheress",
     src: "/audio/girl-like-me.mp3",
     cover: "/images/player/cover-girl-like-me.png",
-    vinyl: "/images/player/vinyl-girl-like-me.png",
+    vinyl: "/images/player/vinyl-girl-like-me.webp",
   },
   {
     slug: "les-fleurs",
@@ -23,7 +23,7 @@ export const tracks: Track[] = [
     artist: "Minnie Riperton",
     src: "/audio/les-fleurs.mp3",
     cover: "/images/player/cover-les-fleurs.png",
-    vinyl: "/images/player/vinyl-les-fleurs.png",
+    vinyl: "/images/player/vinyl-les-fleurs.webp",
   },
   {
     slug: "huit-octobre",
@@ -31,7 +31,7 @@ export const tracks: Track[] = [
     artist: "Cortex",
     src: "/audio/huit-octobre-1971.mp3",
     cover: "/images/player/cover-huit-octobre.png",
-    vinyl: "/images/player/vinyl-huit-octobre.png",
+    vinyl: "/images/player/vinyl-huit-octobre.webp",
   },
   {
     slug: "everything-is-embarrassing",
@@ -39,7 +39,7 @@ export const tracks: Track[] = [
     artist: "Sky Ferreira",
     src: "/audio/everything-is-embarrassing.mp3",
     cover: "/images/player/cover-everything-is-embarrassing.png",
-    vinyl: "/images/player/vinyl-everything-is-embarrassing.png",
+    vinyl: "/images/player/vinyl-everything-is-embarrassing.webp",
   },
   {
     slug: "best-to-you",
@@ -47,6 +47,6 @@ export const tracks: Track[] = [
     artist: "Blood Orange",
     src: "/audio/best-to-you.mp3",
     cover: "/images/player/cover-best-to-you.png",
-    vinyl: "/images/player/vinyl-best-to-you.png",
+    vinyl: "/images/player/vinyl-best-to-you.webp",
   },
 ];
