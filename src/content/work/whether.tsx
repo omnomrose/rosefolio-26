@@ -65,7 +65,7 @@ export function Body() {
   return (
     <>
       {/* CONTEXT (973:1904) */}
-      <section id="context" tabIndex={-1} aria-labelledby="context-heading" className="mt-space-11 w-[666px] max-w-full outline-none">
+      <section id="context" tabIndex={-1} aria-labelledby="context-heading" className="mt-space-11 w-[787px] max-w-full outline-none">
         <SectionHeading id="context-heading" label="Context" title="What do I even wear?" gap="gap-space-1" />
         <p className="type-body-xl mt-space-3 text-surface-200">
           I find myself running behind schedule because I can’t figure out what to wear. Looking outside the window
