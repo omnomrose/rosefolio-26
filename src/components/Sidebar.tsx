@@ -6,7 +6,7 @@ import ContactLinks from "./ContactLinks";
 
 export default function Sidebar() {
   return (
-    <aside className="fixed top-0 left-0 z-20 flex max-h-dvh overflow-y-auto w-[var(--sidebar-width)] flex-col gap-space-8 bg-surface-100 p-space-8 shadow-sticker">
+    <aside className="fixed top-0 left-0 z-20 flex max-h-dvh overflow-y-auto overscroll-contain scrollbar-none w-[var(--sidebar-width)] flex-col gap-space-8 bg-surface-100 p-space-8 shadow-sticker">
       <header className="flex w-full flex-col gap-space-2">
         <Link href="/" aria-label="Rose Nguyen — home" className="block h-[94px] w-[100px]">
           <Image src="/images/logo.svg" alt="" width={100} height={94} priority />
