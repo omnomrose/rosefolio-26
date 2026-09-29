@@ -80,6 +80,13 @@
   line-height: normal;
   letter-spacing: 0;
 }
+@utility type-body-md {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.02em;
+}
 @utility type-caption {
   font-family: var(--font-mono);
   font-size: 14px;

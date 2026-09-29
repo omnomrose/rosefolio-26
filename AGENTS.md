@@ -95,6 +95,7 @@ Use these names exactly. Map them into the Tailwind theme with names that mirror
 | heading-lg | That That New Pixel Test, Italic Square | 36 | 100% | -2% |
 | heading-md | That That New Pixel Test, Italic Square | 24 | 100% | -5% |
 | body-xl | Geist Regular | 16 | 100% | 0 |
+| body-md | Geist Regular | 14 | 100% | -2% |
 | caption | Geist Mono Regular | 14 | 100% | 0 |
 | caption-sm | Geist Mono Regular | 12 | 100% | 0 |
 
@@ -129,6 +130,7 @@ This list comes from the Home frame only. Other frames may use more variables. P
 | Vinyl record | Spins like a real record (constant ~33 RPM, eases up on play and winds down on pause — do NOT copy the Figma keyframes). Spins while music plays and stops or pauses when music pauses. Previous, play/pause, and next controls. Thumbnails switch tracks. A status line shows the state (for example "PAUSED: [song] — [artist]"). | Sidebar (all pages) |
 | Letter/card tilt | On hover, the card tilts toward the cursor position | About |
 | Card flip | On click, the card flips to its back | About |
+| Nav expand | Hovering the active [WORK] tab expands the case study list (Figma 1016:23139 → 1016:23343); rows highlight on hover (surface-110 fill, surface-200 text). | Sidebar |
 | Fridge canvas | Open canvas of works and interests (spec TBD) | Fridge |
 | Custom cursor | Site-wide 15×15 primary-200 square (Rose resized from Figma node 1040:2267) that follows the mouse smoothly (GSAP lerp) at all times. | Global |
 | Case study cursor | On card hover, the cursor becomes a label frame. Whether and Mitchie Matcha: "VIEW CASE STUDY". AR Glasses: "COMING SOON". Still: "VIEW DESIGNATHON". Label frames: nodes 1036:2253, 1038:2261, 1038:2264. | Home |
