@@ -88,7 +88,7 @@ export function Body() {
             </div>
             <Photo
               src={img("ig-salted-maple-post")}
-              alt="Instagram post announcing the Salted Maple matcha drink’s return in July, shown in a Mitchie Matcha cup on a sunny table"
+              alt="Instagram post announcing the Salted Maple matcha’s return on July 1st, shown in a Mitchie Matcha cup on a sunny table"
               className="aspect-[529.6105/827]"
               sizes="(min-width: 1512px) 530px, 36vw"
             />
@@ -98,13 +98,13 @@ export function Body() {
           <div className="grid grid-cols-3 gap-space-1">
             <Photo
               src={img("ig-dessert-1")}
-              alt="Instagram post of a layered matcha dessert bar on a plate, with callout labels"
+              alt="Instagram post asking “Should we bring our matcha Nanaimo bar back?” over a photo of the bar on a plate"
               className="aspect-[327.667/458]"
               sizes="(min-width: 1512px) 328px, 22vw"
             />
             <Photo
               src={img("ig-dessert-2")}
-              alt="Instagram post showing the matcha dessert bar from the side, with callout labels"
+              alt="Instagram post showing the matcha Nanaimo bar from the side, with callout labels for each layer"
               className="aspect-[327.667/458]"
               sizes="(min-width: 1512px) 328px, 22vw"
             />
