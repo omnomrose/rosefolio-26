@@ -145,7 +145,7 @@ Motion rules:
 Target: WCAG 2.2 AA.
 
 Decisions from Rose:
-- **primary-300 (#f30086)** is for hover states (and the active-nav marker) only. Don't use it for resting text.
+- **primary-300 (#f30086)** is for hover states only. The active-nav marker uses primary-200 (matches the cursor). Don't use it for resting text.
 - **surface-50 (50% alpha)** is for strokes and borders only.
 - Text colours are intentional. Don't change them.
 - Also required: semantic landmarks (nav, main), visible focus states, alt text on all case study images, and labelled player controls.

@@ -69,7 +69,7 @@ export default function Nav() {
                 className={`flex w-full flex-col ${active ? "h-[31px] justify-center gap-space-1" : "gap-[14px]"}`}
               >
                 <span className="flex items-center gap-space-1">
-                  {active && <span aria-hidden="true" className="size-[10px] bg-primary-300" />}
+                  {active && <span aria-hidden="true" className="size-[10px] bg-primary-200" />}
                   <span className={`type-caption text-surface-200 uppercase ${active ? "font-bold" : ""}`}>
                     {tab.label}
                   </span>
