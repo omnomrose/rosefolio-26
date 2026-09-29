@@ -47,3 +47,4 @@ next-env.d.ts
 AGENTS.md
 # raw Figma exports (converted to WebP)
 /public/images/work/*/_figma-export/
+/public/images/about/_figma-export/

@@ -203,12 +203,13 @@ Decisions from Rose:
 - One header size for every case study (Whether's): hero 999 × 413, 172px title column, 668px details row.
 - Case study images are Figma's own 2x PNG renders of each image layer (crops + image adjustments baked in), converted to WebP. The 20 Mitchie layers carry 2x PNG export settings; `public/images/work/mitchie-matcha/_figma-export/convert.py` maps layer names → WebP files.
 - AR Glasses for Retail: placeholder page in the case study shell (nav "Coming soon", empty panel).
+- About (973:1160; letter back 1100:2442): collage pinned to the content-area centre (positions in `src/content/about.ts`). Stickers and box items are draggable (GSAP Draggable): they follow the pointer 1:1 — no bounds, lift or easing — and stay where dropped. Letter tilts subtly (max 4°) and flips on click/Enter/Space; no flip hint (Rose). Back links (Instagram handles, contact links) are clickable once flipped. Design-system values only: letter shadow = sticker-shadow, card fill (both faces) = surface-100 (Rose; no paper texture), box heading = heading-lg, letter padding 40 → space-8, message gap 14.973 → space-3, back gap 38 → space-8. Images: Figma's 2x exports of the hifi layers with rotation + sticker-shadow baked in, placed at the layer's bounding box minus the shadow spread (5.6 left, 3.6 top); portrait is a 3x export; back logo is Rose's 2x PNG (shadow included) as WebP. `public/images/about/_figma-export/convert.py` makes the WebPs.
 
 ## 10. Open questions
 
 1. Resume: Google Drive link, coming later.
 2. ~~Still card link~~ Decided: https://devpost.com/software/still-s1u0qt (opens in a new tab).
-3. Frame node IDs for About and Mitchie Matcha pages (Whether: 973:1879).
+3. ~~Frame node IDs~~ About: 973:1160. Mitchie Matcha: 973:19999. Whether: 973:1879.
 4. Fridge canvas behavior (later).
 <!-- BEGIN:nextjs-agent-rules -->
 
