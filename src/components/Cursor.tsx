@@ -4,13 +4,9 @@ import { createContext, useCallback, useContext, useEffect, useRef, useState, ty
 import { gsap } from "gsap";
 import { EyeIcon } from "./Icons";
 
-type CursorContextValue = {
-  setLabel: (label: string | null) => void;
-  /** Hide the custom cursor, e.g. over an iframe where it can't track the pointer. */
-  setHidden: (hidden: boolean) => void;
-};
+type CursorContextValue = { setLabel: (label: string | null) => void };
 
-const CursorContext = createContext<CursorContextValue>({ setLabel: () => {}, setHidden: () => {} });
+const CursorContext = createContext<CursorContextValue>({ setLabel: () => {} });
 
 export const useCursorLabel = () => useContext(CursorContext);
 
@@ -25,8 +21,6 @@ export default function CursorProvider({ children }: { children: ReactNode }) {
   const rootRef = useRef<HTMLDivElement | null>(null);
   const squareRef = useRef<HTMLDivElement | null>(null);
   const labelRef = useRef<HTMLDivElement | null>(null);
-  const bodyRef = useRef<HTMLDivElement | null>(null);
-  const [hidden, setHidden] = useState(false);
 
   // Keep the last label text so it doesn't blank out while fading away.
   const [labelText, setLabelText] = useState("");
@@ -48,20 +42,33 @@ export default function CursorProvider({ children }: { children: ReactNode }) {
     if (!enabled || !rootRef.current) return;
     document.documentElement.classList.add("has-custom-cursor");
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const duration = reduced ? 0 : 0.35;
     const el = rootRef.current;
-    const xTo = gsap.quickTo(el, "x", { duration, ease: "power3.out" });
-    const yTo = gsap.quickTo(el, "y", { duration, ease: "power3.out" });
+    // Reduced motion: snap to the pointer (quickTo with a 0 duration stops updating after the first call).
+    const xTo = reduced ? (x: number) => gsap.set(el, { x }) : gsap.quickTo(el, "x", { duration: 0.35, ease: "power3.out" });
+    const yTo = reduced ? (y: number) => gsap.set(el, { y }) : gsap.quickTo(el, "y", { duration: 0.35, ease: "power3.out" });
     let shown = false;
 
-    const onMove = (e: PointerEvent) => {
+    const moveTo = (x: number, y: number) => {
       if (!shown) {
-        gsap.set(el, { x: e.clientX, y: e.clientY });
+        gsap.set(el, { x, y });
         gsap.to(el, { autoAlpha: 1, duration: 0.2 });
         shown = true;
       }
-      xTo(e.clientX);
-      yTo(e.clientY);
+      xTo(x);
+      yTo(y);
+    };
+    const onMove = (e: PointerEvent) => moveTo(e.clientX, e.clientY);
+
+    // Embedded demos (e.g. the Whether prototype, ?embed=1) hide their own cursor and
+    // post pointer positions here, so the square keeps following over the iframe.
+    const onMessage = (e: MessageEvent) => {
+      const data = e.data as { type?: string; x?: number; y?: number } | null;
+      if (!data || typeof data.type !== "string" || !data.type.endsWith(":pointer")) return;
+      if (typeof data.x !== "number" || typeof data.y !== "number") return;
+      const frame = Array.from(document.querySelectorAll("iframe")).find((f) => f.contentWindow === e.source);
+      if (!frame) return;
+      const rect = frame.getBoundingClientRect();
+      moveTo(rect.left + data.x, rect.top + data.y);
     };
     const onLeave = () => {
       gsap.to(el, { autoAlpha: 0, duration: 0.2 });
@@ -69,9 +76,11 @@ export default function CursorProvider({ children }: { children: ReactNode }) {
     };
 
     window.addEventListener("pointermove", onMove);
+    window.addEventListener("message", onMessage);
     document.documentElement.addEventListener("pointerleave", onLeave);
     return () => {
       window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("message", onMessage);
       document.documentElement.removeEventListener("pointerleave", onLeave);
       document.documentElement.classList.remove("has-custom-cursor");
     };
@@ -90,13 +99,8 @@ export default function CursorProvider({ children }: { children: ReactNode }) {
     });
   }, [label]);
 
-  useEffect(() => {
-    if (!bodyRef.current) return;
-    gsap.to(bodyRef.current, { autoAlpha: hidden ? 0 : 1, duration: 0.15, overwrite: true });
-  }, [hidden]);
-
   return (
-    <CursorContext.Provider value={{ setLabel, setHidden }}>
+    <CursorContext.Provider value={{ setLabel }}>
       {children}
       {enabled && (
         <div
@@ -104,7 +108,6 @@ export default function CursorProvider({ children }: { children: ReactNode }) {
           aria-hidden="true"
           className="pointer-events-none invisible fixed top-0 left-0 z-50 opacity-0"
         >
-          <div ref={bodyRef}>
           <div ref={squareRef} className="absolute size-[15px] -translate-x-1/2 -translate-y-1/2 bg-primary-200" />
           <div
             ref={labelRef}
@@ -112,7 +115,6 @@ export default function CursorProvider({ children }: { children: ReactNode }) {
           >
             <EyeIcon className="h-[10.004px] w-[15.006px] text-surface-200" />
             <span className="type-caption text-surface-200 uppercase">{labelText}</span>
-          </div>
           </div>
         </div>
       )}

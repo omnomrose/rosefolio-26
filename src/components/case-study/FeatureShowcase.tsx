@@ -2,7 +2,6 @@
 
 import { useEffect, useId, useRef, useState, type ReactNode } from "react";
 import { gsap } from "gsap";
-import { useCursorLabel } from "@/components/Cursor";
 import { ChevronUpIcon, MinusIcon, PlusIcon } from "@/components/Icons";
 
 type Feature = { id: string; title: string; description: string; hash: string };
@@ -33,7 +32,6 @@ export default function FeatureShowcase({
   const animateAccordion = useRef(false);
   const shownHash = useRef(features[0].hash);
   const uid = useId();
-  const { setHidden } = useCursorLabel();
 
   // Expand the active description, collapse the rest.
   useEffect(() => {
@@ -58,7 +56,7 @@ export default function FeatureShowcase({
     const hash = features[active].hash;
     if (!iframe || hash === shownHash.current) return;
     shownHash.current = hash;
-    const src = `${demoUrl}#${hash}`;
+    const src = `${demoUrl}?embed=1#${hash}`;
     if (prefersReducedMotion()) {
       iframe.src = src;
       return;
@@ -136,17 +134,15 @@ export default function FeatureShowcase({
         </div>
       </div>
 
-      <div
-        className="relative h-[634px] w-[455px] shrink-0 overflow-hidden rounded-2 bg-surface-110"
-        onPointerEnter={() => setHidden(true)}
-        onPointerLeave={() => setHidden(false)}
-      >
+      {/* Prototype slot (973:1940, 455 × 634). The demo's ?embed=1 mode renders just the
+          phone (393:852) on a transparent page, so the iframe is sized to that ratio and centred. */}
+      <div className="relative flex h-[634px] w-[455px] shrink-0 justify-center">
         <iframe
           ref={iframeRef}
-          src={`${demoUrl}#${features[0].hash}`}
+          src={`${demoUrl}?embed=1#${features[0].hash}`}
           title={prototypeTitle}
           loading="lazy"
-          className="absolute inset-0 size-full border-0"
+          className="aspect-[393/852] h-full border-0 bg-transparent"
         />
         <p className="sr-only" aria-live="polite">
           Prototype showing: {features[active].title}

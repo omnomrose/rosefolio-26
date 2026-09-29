@@ -177,7 +177,7 @@ Decisions from Rose:
 - Case studies: each has its own sidebar (back home, title, summary, scroll-synced section nav, previous / read next, contact). No vinyl player on case study pages. Template: `src/content/work/<slug>.tsx` (meta + Body) registered in `src/content/work/index.ts`, rendered at `/work/[slug]`.
 - All dark text uses surface-200 (#1e1e1e), even where a Figma frame shows #2f2b29 / text-black-light.
 - Case study meta labels (ROLE, TIMELINE…) stay primary-300 as designed (Rose), despite ~3.7:1 contrast.
-- Whether: previous → Still (disabled until its page exists), next → Mitchie Matcha. Feature buttons switch the embedded demo (whether-demo.vercel.app#home/#digitize/#personalize/#closet); up/down buttons step through features. Custom cursor hides over the iframe.
+- Whether: previous → Still (disabled until its page exists), next → Mitchie Matcha. Feature buttons switch the embedded demo (whether-demo.vercel.app#home/#digitize/#personalize/#closet); up/down buttons step through features. The demo is loaded with `?embed=1` (source: ~/Desktop/clothing-demo/web, deployed to Vercel as whether-demo): phone only, transparent page, no reset pill; it posts `whether-demo:pointer` {x, y} to the parent so the pink square keeps following over the phone.
 - Problem collages are flattened images; quote bubbles are live text laid over them.
 - Repo: github.com/omnomrose/rosefolio-26 (Rose pushes; Claude's GitHub app isn't installed on it).
 
