@@ -27,7 +27,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <CursorProvider>
           <Sidebar />
           <SmoothScroll>
-            <main className="min-h-screen pt-space-8 pr-space-8 pb-space-8 pl-[calc(var(--sidebar-width)+var(--grid-gutter))]">
+            <main className="min-h-screen pt-[38px] pr-space-8 pb-space-8 pl-[calc(var(--sidebar-width)+var(--grid-gutter))]">
               {children}
             </main>
           </SmoothScroll>

@@ -24,6 +24,18 @@ export default function CaseStudyCard({ study }: { study: CaseStudy }) {
             sizes="(min-width: 1512px) 40vw, 45vw"
             className={`object-cover ${cover.rounded ? "rounded-1" : ""}`}
           />
+        ) : cover.kind === "video" ? (
+          <video
+            src={cover.src}
+            poster={cover.poster}
+            aria-label={cover.alt}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            className="absolute inset-0 size-full object-cover"
+          />
         ) : (
           <>
             <Image src={cover.background} alt="" fill sizes="(min-width: 1512px) 40vw, 45vw" className="object-cover" />

@@ -2,6 +2,7 @@ export type CursorLabel = "VIEW CASE STUDY" | "COMING SOON" | "VIEW DESIGNATHON"
 
 type Cover =
   | { kind: "photo"; src: string; alt: string; rounded?: boolean }
+  | { kind: "video"; src: string; poster: string; alt: string }
   | {
       kind: "gif";
       background: string;
@@ -37,7 +38,7 @@ export const caseStudies: CaseStudy[] = [
     cover: {
       kind: "gif",
       background: "/images/work/cover-bg-whether.png",
-      gif: "/images/work/whether.gif",
+      gif: "/images/work/whether.webp",
       alt: "Whether app screen suggesting an outfit for the day's weather",
       width: "122.3%",
       height: "100%",
@@ -68,9 +69,10 @@ export const caseStudies: CaseStudy[] = [
     size: "small",
     cursor: "COMING SOON",
     cover: {
-      kind: "photo",
-      src: "/images/work/cover-ar-glasses.jpg",
-      alt: "Folded sweaters stacked on a retail shelf",
+      kind: "video",
+      src: "/images/work/ar-glasses.mp4",
+      poster: "/images/work/ar-glasses-poster.jpg",
+      alt: "Point-of-view video of AR glasses showing product and stock info over a retail shelf",
     },
   },
   {

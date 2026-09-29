@@ -116,6 +116,7 @@ This list comes from the Home frame only. Other frames may use more variables. P
 - 12 columns, 36px outer margin, 36px gutter. At the 1512 design width, a column is 87px.
 - The sidebar is 369px (margin + 3 columns). Large cards span 5 columns (579), small cards span 4 (456). This matches the Figma file exactly.
 - Row gap between cards is 36px (same as the gutter).
+- Card area starts 38px from the top (Rose: keep Figma's 38px).
 - Fluid: columns stretch with the viewport; margins and gutters stay 36px.
 - The sidebar is always fixed; only the card area scrolls.
 - Build layout on this grid (CSS grid), not with absolute positioning.
@@ -160,6 +161,9 @@ Decisions from Rose:
 - Audio: self-hosted files in `/public/audio` (Rose's files).
 - Email: m.rosengyn@gmail.com (overrides the Figma annotation).
 - Shader covers (Whether, Still): export the shader background flat, then overlay Rose's GIF centered at the exact Figma size. No WebGPU shaders in the browser.
+- Heavy media is converted for the web: GIFs → animated WebP (keeps transparency), videos → 1280px H.264 MP4 (muted, looping) with a poster frame.
+- AR Glasses card uses Rose's inventory POV video as its cover.
+- Repo: github.com/omnomrose/rosefolio-26 (Rose pushes; Claude's GitHub app isn't installed on it).
 
 ## 10. Open questions
 
