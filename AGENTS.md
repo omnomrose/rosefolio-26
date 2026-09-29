@@ -131,6 +131,25 @@ This list comes from the Home frame only. Other frames may use more variables. P
 - The sidebar is always fixed; only the card area scrolls.
 - Build layout on this grid (CSS grid), not with absolute positioning.
 
+## 5c. Case study pages (all case studies)
+
+Every case study uses the same shell. Reference: Whether (Figma 973:1879, sidebar 973:1975).
+
+**Side nav (required on every case study, same component: `CaseStudySidebar`)**
+- Replaces the main sidebar (no vinyl player, no [WORK]/[ABOUT] nav).
+- Top to bottom: `← BACK HOME` → 44px (space-10) → title (heading-lg, 141% line height, -5% tracking) → 20px (space-4) → summary (body-xl) → 76px (space-17) → section nav → footer.
+- Section nav: 14px padding, 20px gap, Geist Mono 16 / -2% / uppercase, 21px line box; inactive rows are 17px tall (surface-150, hover primary-300); the active row shows a 9px primary-200 square (surface-200 text). Active item follows the scroll position; clicking smooth-scrolls to the section (first item scrolls to the top).
+- Footer: `← PREVIOUS` / `READ NEXT →` (caption, surface-150), then contact links (24px gap).
+- The side nav never scrolls. The block holding the section nav + footer is 530px tall and shrinks on short screens so the footer always stays visible with 36px bottom padding.
+
+**Adding a case study**
+1. Create `src/content/work/<slug>.tsx` exporting `meta` (title, summary, sections, previous/next, hero, details) and `Body`.
+2. Register it in `src/content/work/index.ts`. It renders at `/work/<slug>`.
+3. Section ids in `meta.sections` must match the `id`s in `Body` (each section: `tabIndex={-1}`, `outline-none`).
+4. Build `Body` from `src/components/case-study/*` blocks; add new blocks there rather than one-off markup.
+5. Content panel: surface-100, sticker-shadow, 36px padding, columns 4–12. Hero + header (`CaseStudyHeader`) come from `meta`.
+6. Images go in `public/images/work/<slug>/` as WebP at 2x the Figma size.
+
 ## 6. Interactions and motion (GSAP)
 
 | Feature | Behavior | Where |
@@ -174,7 +193,7 @@ Decisions from Rose:
 - Shader covers (Whether, Still): export the shader background flat, then overlay Rose's GIF centered at the exact Figma size. No WebGPU shaders in the browser.
 - Heavy media is converted for the web: GIFs → animated WebP (keeps transparency), videos → 1280px H.264 MP4 (muted, looping) with a poster frame.
 - AR Glasses card uses Rose's inventory POV video as its cover.
-- Case studies: each has its own sidebar (back home, title, summary, scroll-synced section nav, previous / read next, contact). No vinyl player on case study pages. Template: `src/content/work/<slug>.tsx` (meta + Body) registered in `src/content/work/index.ts`, rendered at `/work/[slug]`.
+- Case studies: all use the shared case study side nav and template (see §5c).
 - All dark text uses surface-200 (#1e1e1e), even where a Figma frame shows #2f2b29 / text-black-light.
 - Case study meta labels (ROLE, TIMELINE…) stay primary-300 as designed (Rose), despite ~3.7:1 contrast.
 - Whether: previous → Still (disabled until its page exists), next → Mitchie Matcha. Feature buttons switch the embedded demo (whether-demo.vercel.app#home/#digitize/#personalize/#closet); up/down buttons step through features. The demo is loaded with `?embed=1` (source: ~/Desktop/clothing-demo/web, deployed to Vercel as whether-demo): phone only, transparent page, no reset pill; it posts `whether-demo:pointer` {x, y} to the parent so the pink square keeps following over the phone.
@@ -185,7 +204,7 @@ Decisions from Rose:
 
 1. Resume: Google Drive link, coming later.
 2. ~~Still card link~~ Decided: https://devpost.com/software/still-s1u0qt (opens in a new tab).
-3. Frame node IDs for About, Whether, and Mitchie Matcha pages.
+3. Frame node IDs for About and Mitchie Matcha pages (Whether: 973:1879).
 4. Fridge canvas behavior (later).
 <!-- BEGIN:nextjs-agent-rules -->
 

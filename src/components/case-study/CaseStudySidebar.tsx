@@ -62,8 +62,10 @@ export default function CaseStudySidebar({ meta }: { meta: CaseStudyMeta }) {
   };
 
   return (
-    <aside className="fixed top-0 left-0 z-20 flex max-h-dvh w-[var(--sidebar-width)] flex-col gap-space-17 overflow-y-auto overscroll-contain bg-surface-100 p-space-8 shadow-sticker scrollbar-none">
-      <header className="flex w-full flex-col items-start gap-space-10">
+    // Never scrolls: on short screens the space between the section nav and the footer
+    // shrinks instead, so the wayfinder + contact links always stay visible (36px bottom padding).
+    <aside className="fixed top-0 left-0 z-20 flex max-h-dvh w-[var(--sidebar-width)] flex-col gap-space-17 overflow-hidden bg-surface-100 p-space-8 shadow-sticker">
+      <header className="flex w-full shrink-0 flex-col items-start gap-space-10">
         <Link href="/" className={`flex items-center gap-space-3 text-surface-200 transition-colors hover:text-primary-300 ${monoNav}`}>
           <ArrowLeftIcon className="h-[10.004px] w-[10.755px]" />
           Back home
@@ -75,7 +77,7 @@ export default function CaseStudySidebar({ meta }: { meta: CaseStudyMeta }) {
         </div>
       </header>
 
-      <div className="flex h-[530px] w-full shrink-0 flex-col justify-between">
+      <div className="flex h-[530px] min-h-0 w-full flex-col justify-between">
         <nav aria-label="On this page">
           <ul className="flex flex-col gap-space-4 p-[14px]">
             {meta.sections.map((section) => {

@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from "react";
+import { usePathname } from "next/navigation";
 import { gsap } from "gsap";
 import { EyeIcon } from "./Icons";
 
@@ -16,7 +17,11 @@ export const useCursorLabel = () => useContext(CursorContext);
  * label frame (nodes 1036:2253 / 1038:2261 / 1038:2264).
  */
 export default function CursorProvider({ children }: { children: ReactNode }) {
-  const [label, setLabelState] = useState<string | null>(null);
+  const pathname = usePathname();
+  // A label belongs to the route it was set on. A card that navigates on click unmounts
+  // before it gets pointerleave, so without this the label would stick on the next page.
+  const [labelState, setLabelState] = useState<{ text: string; path: string } | null>(null);
+  const label = labelState && labelState.path === pathname ? labelState.text : null;
   const [enabled, setEnabled] = useState(false);
   const rootRef = useRef<HTMLDivElement | null>(null);
   const squareRef = useRef<HTMLDivElement | null>(null);
@@ -24,10 +29,13 @@ export default function CursorProvider({ children }: { children: ReactNode }) {
 
   // Keep the last label text so it doesn't blank out while fading away.
   const [labelText, setLabelText] = useState("");
-  const setLabel = useCallback((next: string | null) => {
-    setLabelState(next);
-    if (next) setLabelText(next);
-  }, []);
+  const setLabel = useCallback(
+    (next: string | null) => {
+      setLabelState(next ? { text: next, path: pathname } : null);
+      if (next) setLabelText(next);
+    },
+    [pathname],
+  );
 
   // Only take over the cursor on mouse/trackpad devices.
   useEffect(() => {
