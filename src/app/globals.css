@@ -1,26 +1,140 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/*
+ * Design tokens — mirrored 1:1 from the Figma variables in rosefolio-26-27.
+ * Never add a value here that isn't a Figma variable (see AGENTS.md §2).
+ */
+@theme {
+  /* colours/surface */
+  --color-surface-10: rgb(47 43 41 / 0.1);
+  --color-surface-30: rgb(47 43 41 / 0.3);
+  --color-surface-50: rgb(47 43 41 / 0.5);
+  --color-surface-100: #f8f4f6;
+  --color-surface-110: #f6f1ee;
+  --color-surface-150: #746e6e;
+  --color-surface-200: #1e1e1e;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  /* colours/primary */
+  --color-primary-10: rgb(255 206 233 / 0.1);
+  --color-primary-50: rgb(255 206 233 / 0.5);
+  --color-primary-100: #ffcee9;
+  --color-primary-200: #ff8aca;
+  --color-primary-300: #f30086;
+
+  /* colours/secondary */
+  --color-secondary-10: rgb(190 227 197 / 0.1);
+  --color-secondary-50: rgb(190 227 197 / 0.5);
+  --color-secondary-100: #bee3c5;
+  --color-secondary-200: #7cc78a;
+  --color-secondary-300: #4aac5c;
+
+  /* padding/space-* */
+  --spacing-space-0: 4px;
+  --spacing-space-1: 8px;
+  --spacing-space-2: 12px;
+  --spacing-space-3: 16px;
+  --spacing-space-4: 20px;
+  --spacing-space-5: 24px;
+  --spacing-space-6: 28px;
+  --spacing-space-7: 32px;
+  --spacing-space-8: 36px;
+
+  /* radius/* */
+  --radius-1: 2px;
+  --radius-2: 4px;
+  --radius-3: 8px;
+  --radius-4: 12px;
+  --radius-5: 16px;
+  --radius-6: 20px;
+  --radius-7: 24px;
+  --radius-8: 500px;
+
+  /* sticker-shadow */
+  --shadow-sticker: 0 2px 5.6px 0 rgb(0 0 0 / 0.15);
+
+  /* fonts (next/font variables set in layout.tsx) */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-pixel: var(--font-pixel-italic-square);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* desktop/* text styles */
+@utility type-heading-lg {
+  font-family: var(--font-pixel);
+  font-size: 36px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.02em;
+}
+@utility type-heading-md {
+  font-family: var(--font-pixel);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.05em;
+}
+@utility type-body-xl {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0;
+}
+@utility type-caption {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0;
+}
+@utility type-caption-sm {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0;
+}
+
+/*
+ * Layout grid: 12 columns, 36px margin, 36px gutter (AGENTS.md §5b).
+ * At 1512px wide a column is 87px and the sidebar (margin + 3 cols) is 369px.
+ * Below 1512px the sidebar holds at 369px so the player never squashes.
+ */
+:root {
+  --grid-margin: 36px;
+  --grid-gutter: 36px;
+  --grid-col: calc((100% - 2 * var(--grid-margin) - 11 * var(--grid-gutter)) / 12);
+  --sidebar-width: max(369px, calc(var(--grid-margin) + 3 * var(--grid-col) + 2 * var(--grid-gutter)));
+}
+
+html,
+body {
+  background: var(--color-surface-100);
+  color: var(--color-surface-200);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Background grid: 35px lines, 0.7px surface-200 at 5% (Figma "grid" layer). */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgb(30 30 30 / 0.05) 0.7px, transparent 0.7px),
+    linear-gradient(to bottom, rgb(30 30 30 / 0.05) 0.7px, transparent 0.7px);
+  background-size: 35px 35px;
+}
+
+/* Custom cursor replaces the native one on mouse/trackpad devices only. */
+@media (hover: hover) and (pointer: fine) {
+  html.has-custom-cursor,
+  html.has-custom-cursor * {
+    cursor: none !important;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary-300);
+  outline-offset: 2px;
 }
