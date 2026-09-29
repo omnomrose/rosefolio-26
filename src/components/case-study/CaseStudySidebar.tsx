@@ -12,7 +12,7 @@ import type { CaseStudyMeta, Wayfinder } from "@/content/work/types";
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 // Geist Mono 16 / -2% / uppercase — used by "back home" and the section nav in Figma (not a text style).
-const monoNav = "font-mono text-[16px] leading-normal tracking-[-0.02em] uppercase";
+const monoNav = "font-mono text-[16px] leading-[21px] tracking-[-0.02em] uppercase";
 
 /*
  * Case study sidebar (973:1975): back home, title + summary, section nav that follows the scroll
@@ -63,13 +63,16 @@ export default function CaseStudySidebar({ meta }: { meta: CaseStudyMeta }) {
 
   return (
     <aside className="fixed top-0 left-0 z-20 flex max-h-dvh w-[var(--sidebar-width)] flex-col gap-space-17 overflow-y-auto overscroll-contain bg-surface-100 p-space-8 shadow-sticker scrollbar-none">
-      <header className="flex w-full flex-col gap-space-2">
+      <header className="flex w-full flex-col items-start gap-space-10">
         <Link href="/" className={`flex items-center gap-space-3 text-surface-200 transition-colors hover:text-primary-300 ${monoNav}`}>
           <ArrowLeftIcon className="h-[10.004px] w-[10.755px]" />
           Back home
         </Link>
-        <p className="type-heading-lg text-surface-200">{meta.title}</p>
-        <p className="type-body-xl text-surface-200">{meta.summary}</p>
+        <div className="flex w-full flex-col gap-space-4">
+          {/* Figma overrides heading-lg here: 141% line height, -5% tracking. */}
+          <p className="type-heading-lg leading-[1.41] tracking-[-0.05em] text-surface-200">{meta.title}</p>
+          <p className="type-body-xl text-surface-200">{meta.summary}</p>
+        </div>
       </header>
 
       <div className="flex h-[530px] w-full shrink-0 flex-col justify-between">
@@ -78,7 +81,7 @@ export default function CaseStudySidebar({ meta }: { meta: CaseStudyMeta }) {
             {meta.sections.map((section) => {
               const isActive = section.id === active;
               return (
-                <li key={section.id}>
+                <li key={section.id} className={isActive ? "" : "h-[17px]"}>
                   <a
                     href={`#${section.id}`}
                     onClick={(e) => goTo(e, section.id)}

@@ -88,6 +88,7 @@ Use these names exactly. Map them into the Tailwind theme with names that mirror
 | space-6 | 28 |
 | space-7 | 32 |
 | space-8 | 36 |
+| space-10 | 44 |
 | space-11 | 48 |
 | space-13 | 60 |
 | space-15 | 68 |
