@@ -8,6 +8,7 @@ import { ScrollSmoother } from "gsap/ScrollSmoother";
 import ContactLinks from "@/components/ContactLinks";
 import { ArrowLeftIcon, ArrowRightIcon } from "@/components/Icons";
 import type { CaseStudyMeta, Wayfinder } from "@/content/work/types";
+import { setActiveTab, useActiveTab } from "./activeTab";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
@@ -15,16 +16,28 @@ gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 const monoNav = "font-mono text-[16px] leading-[21px] tracking-[-0.02em] uppercase";
 
 /*
- * Case study sidebar (973:1975): back home, title + summary, section nav that follows the scroll
- * position, previous / read next, contact links.
+ * Case study sidebar (973:1975): back home, title + summary, section nav, previous / read next,
+ * contact links. The section nav either follows the scroll position ("scroll") or switches
+ * between tabs ("tabs", e.g. Mitchie Matcha).
  */
 export default function CaseStudySidebar({ meta }: { meta: CaseStudyMeta }) {
-  const [active, setActive] = useState(meta.sections[0]?.id);
+  const tabs = meta.navigation === "tabs";
+  const tabIds = meta.sections.map((s) => s.id);
+  const activeTab = useActiveTab(tabIds);
+  const [spyActive, setSpyActive] = useState(meta.sections[0]?.id);
+  const active = tabs ? activeTab : spyActive;
+
+  // Tab switched: the page height changed, so re-measure the smooth scroller.
+  useEffect(() => {
+    if (tabs) ScrollTrigger.refresh();
+  }, [tabs, activeTab]);
 
   // Scroll spy: the active section is the last one whose top has passed 40% of the viewport;
   // at the very bottom of the page the last section wins.
   useEffect(() => {
+    if (tabs) return;
     const ids = meta.sections.map((s) => s.id);
+    const setActive = setSpyActive;
     const update = (progress?: number) => {
       if (progress !== undefined && progress > 0.995) {
         setActive(ids[ids.length - 1]);
@@ -45,13 +58,23 @@ export default function CaseStudySidebar({ meta }: { meta: CaseStudyMeta }) {
     });
     update();
     return () => trigger.kill();
-  }, [meta.sections]);
+  }, [tabs, meta.sections]);
 
   const goTo = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    if (tabs) {
+      e.preventDefault();
+      // Back to the top, then swap the content and move focus to the new panel.
+      const smoother = ScrollSmoother.get();
+      if (smoother) smoother.scrollTo(0, false);
+      else window.scrollTo({ top: 0 });
+      setActiveTab(id);
+      requestAnimationFrame(() => document.getElementById(`panel-${id}`)?.focus({ preventScroll: true }));
+      return;
+    }
     const el = document.getElementById(id);
     if (!el) return;
     e.preventDefault();
-    setActive(id);
+    setSpyActive(id);
     // The first section also covers the hero, so it scrolls back to the top of the page.
     const isFirst = id === meta.sections[0]?.id;
     const smoother = ScrollSmoother.get();
@@ -78,7 +101,7 @@ export default function CaseStudySidebar({ meta }: { meta: CaseStudyMeta }) {
       </header>
 
       <div className="flex h-[530px] min-h-0 w-full flex-col justify-between">
-        <nav aria-label="On this page">
+        <nav aria-label={tabs ? "Case study sections" : "On this page"}>
           <ul className="flex flex-col gap-space-4 p-[14px]">
             {meta.sections.map((section) => {
               const isActive = section.id === active;
@@ -87,7 +110,8 @@ export default function CaseStudySidebar({ meta }: { meta: CaseStudyMeta }) {
                   <a
                     href={`#${section.id}`}
                     onClick={(e) => goTo(e, section.id)}
-                    aria-current={isActive ? "location" : undefined}
+                    aria-controls={tabs ? `panel-${section.id}` : undefined}
+                    aria-current={isActive ? (tabs ? "page" : "location") : undefined}
                     className={`flex items-center transition-colors ${monoNav} ${
                       isActive ? "text-surface-200" : "text-surface-150 hover:text-primary-300"
                     }`}

@@ -45,3 +45,5 @@ next-env.d.ts
 .DS_Store
 
 AGENTS.md
+# raw Figma exports (converted to WebP)
+/public/images/work/*/_figma-export/

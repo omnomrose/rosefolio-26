@@ -26,8 +26,9 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
   const { meta, Body } = study;
 
   return (
-    <article className="flex w-full flex-col bg-surface-100 p-space-8 shadow-sticker">
-      <CaseStudyHeader meta={meta} />
+    // Fills at least the viewport so placeholder pages (no hero) still read as a panel.
+    <article className="flex min-h-[calc(100dvh-2*var(--spacing-space-8))] w-full flex-col bg-surface-100 p-space-8 shadow-sticker">
+      {meta.hero && <CaseStudyHeader meta={meta} />}
       <Body />
     </article>
   );

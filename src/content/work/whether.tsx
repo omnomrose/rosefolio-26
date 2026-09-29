@@ -19,6 +19,7 @@ export const meta: CaseStudyMeta = {
   previous: { label: "Previous" },
   next: { label: "Read Next", href: "/work/mitchie-matcha" },
   hero: {
+    kind: "overlay",
     // TODO(Rose): swap for the 2x export of node 973:1973 → /images/work/whether/hero-bg.webp
     background: "/images/work/cover-bg-whether.jpg",
     overlay: "/images/work/whether.webp",
