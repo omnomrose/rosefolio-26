@@ -37,7 +37,7 @@ export const caseStudies: CaseStudy[] = [
     cursor: "VIEW CASE STUDY",
     cover: {
       kind: "gif",
-      background: "/images/work/cover-bg-whether.png",
+      background: "/images/work/cover-bg-whether.jpg",
       gif: "/images/work/whether.webp",
       alt: "Whether app screen suggesting an outfit for the day's weather",
       width: "122.3%",
@@ -85,12 +85,9 @@ export const caseStudies: CaseStudy[] = [
     // TODO(Rose): link for "VIEW DESIGNATHON"
     cursor: "VIEW DESIGNATHON",
     cover: {
-      kind: "gif",
-      background: "/images/work/cover-bg-still.png",
-      gif: "/images/work/still.gif",
+      kind: "photo",
+      src: "/images/work/cover-still.jpg",
       alt: "Still app screens on three iPhones",
-      width: "144.04%",
-      height: "114.14%",
     },
   },
 ];
