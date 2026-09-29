@@ -8,6 +8,7 @@ import { useCursorLabel } from "./Cursor";
 // Cover aspect ratios from Figma: large 548×389, small 424×389.
 const coverAspect = { large: "aspect-[548/389]", small: "aspect-[424/389]" } as const;
 const span = { large: "col-span-5", small: "col-span-4" } as const;
+const videoPosition = { left: "object-left", center: "object-center", right: "object-right" } as const;
 
 export default function CaseStudyCard({ study }: { study: CaseStudy }) {
   const { setLabel } = useCursorLabel();
@@ -34,7 +35,7 @@ export default function CaseStudyCard({ study }: { study: CaseStudy }) {
             loop
             playsInline
             preload="metadata"
-            className="absolute inset-0 size-full object-cover"
+            className={`absolute inset-0 size-full object-cover ${videoPosition[cover.position ?? "center"]}`}
           />
         ) : (
           <>

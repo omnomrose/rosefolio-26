@@ -2,7 +2,7 @@ export type CursorLabel = "VIEW CASE STUDY" | "COMING SOON" | "VIEW DESIGNATHON"
 
 type Cover =
   | { kind: "photo"; src: string; alt: string; rounded?: boolean }
-  | { kind: "video"; src: string; poster: string; alt: string }
+  | { kind: "video"; src: string; poster: string; alt: string; position?: "left" | "center" | "right" }
   | {
       kind: "gif";
       background: string;
@@ -72,6 +72,7 @@ export const caseStudies: CaseStudy[] = [
       kind: "video",
       src: "/images/work/ar-glasses.mp4",
       poster: "/images/work/ar-glasses-poster.jpg",
+      position: "right",
       alt: "Point-of-view video of AR glasses showing product and stock info over a retail shelf",
     },
   },
