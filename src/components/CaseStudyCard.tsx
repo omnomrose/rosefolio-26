@@ -78,6 +78,14 @@ export default function CaseStudyCard({ study }: { study: CaseStudy }) {
     onPointerLeave: () => setLabel(null),
   };
 
+  if (study.href?.startsWith("http")) {
+    return (
+      <a href={study.href} target="_blank" rel="noopener noreferrer" className={cardClass} {...hoverProps}>
+        {body}
+      </a>
+    );
+  }
+
   if (study.href) {
     return (
       <Link href={study.href} className={cardClass} {...hoverProps}>

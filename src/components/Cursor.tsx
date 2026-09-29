@@ -11,7 +11,7 @@ const CursorContext = createContext<CursorContextValue>({ setLabel: () => {} });
 export const useCursorLabel = () => useContext(CursorContext);
 
 /*
- * Site-wide custom cursor (Figma node 1040:2267): a 26×26 primary-200 square
+ * Site-wide custom cursor (Figma node 1040:2267): a 15×15 primary-200 square (Rose: smaller than Figma's 26×26)
  * that trails the pointer smoothly. Over a case study card it morphs into the
  * label frame (nodes 1036:2253 / 1038:2261 / 1038:2264).
  */
@@ -93,7 +93,7 @@ export default function CursorProvider({ children }: { children: ReactNode }) {
           aria-hidden="true"
           className="pointer-events-none invisible fixed top-0 left-0 z-50 opacity-0"
         >
-          <div ref={squareRef} className="absolute size-[26px] -translate-x-1/2 -translate-y-1/2 bg-primary-200" />
+          <div ref={squareRef} className="absolute size-[15px] -translate-x-1/2 -translate-y-1/2 bg-primary-200" />
           <div
             ref={labelRef}
             className="invisible absolute flex -translate-x-1/2 -translate-y-1/2 items-center justify-center gap-[10px] rounded-2 border border-surface-200 bg-primary-200 p-[10px] whitespace-nowrap opacity-0"

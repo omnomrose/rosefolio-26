@@ -130,7 +130,7 @@ This list comes from the Home frame only. Other frames may use more variables. P
 | Letter/card tilt | On hover, the card tilts toward the cursor position | About |
 | Card flip | On click, the card flips to its back | About |
 | Fridge canvas | Open canvas of works and interests (spec TBD) | Fridge |
-| Custom cursor | Site-wide 26×26 primary-200 square (node 1040:2267) that follows the mouse smoothly (GSAP lerp) at all times. | Global |
+| Custom cursor | Site-wide 15×15 primary-200 square (Rose resized from Figma node 1040:2267) that follows the mouse smoothly (GSAP lerp) at all times. | Global |
 | Case study cursor | On card hover, the cursor becomes a label frame. Whether and Mitchie Matcha: "VIEW CASE STUDY". AR Glasses: "COMING SOON". Still: "VIEW DESIGNATHON". Label frames: nodes 1036:2253, 1038:2261, 1038:2264. | Home |
 
 Motion rules:
@@ -168,7 +168,7 @@ Decisions from Rose:
 ## 10. Open questions
 
 1. Resume: Google Drive link, coming later.
-2. Still card: where does "VIEW DESIGNATHON" link to?
+2. ~~Still card link~~ Decided: https://devpost.com/software/still-s1u0qt (opens in a new tab).
 3. Frame node IDs for About, Whether, and Mitchie Matcha pages.
 4. Fridge canvas behavior (later).
 <!-- BEGIN:nextjs-agent-rules -->
@@ -180,3 +180,4 @@ This version has breaking changes — APIs, conventions, and file structure may 
 This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
 
 <!-- END:nextjs-agent-rules -->
+- AR Glasses video always plays, including for reduced-motion users (Rose).

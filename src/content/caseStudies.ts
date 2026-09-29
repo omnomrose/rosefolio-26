@@ -82,7 +82,7 @@ export const caseStudies: CaseStudy[] = [
     description:
       "An Apple Watch and iPhone concept built around a water metaphor that reflects a person’s real-time stress levels.",
     size: "large",
-    // TODO(Rose): link for "VIEW DESIGNATHON"
+    href: "https://devpost.com/software/still-s1u0qt",
     cursor: "VIEW DESIGNATHON",
     cover: {
       kind: "photo",
