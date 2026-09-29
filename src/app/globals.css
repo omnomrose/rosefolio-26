@@ -38,6 +38,10 @@
   --spacing-space-6: 28px;
   --spacing-space-7: 32px;
   --spacing-space-8: 36px;
+  --spacing-space-11: 48px;
+  --spacing-space-13: 60px;
+  --spacing-space-15: 68px;
+  --spacing-space-17: 76px;
 
   /* radius/* */
   --radius-1: 2px;
@@ -92,6 +96,35 @@
   font-size: 14px;
   font-weight: 400;
   line-height: normal;
+  letter-spacing: 0;
+}
+@utility type-title-xl {
+  font-family: var(--font-sans);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0;
+}
+@utility type-title-lg {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0;
+}
+@utility type-label-lg {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0;
+}
+/* body/16: Geist 16, 141% line height (case study body copy). */
+@utility type-body-16 {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.41;
   letter-spacing: 0;
 }
 @utility type-caption-sm {

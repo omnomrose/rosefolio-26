@@ -79,3 +79,65 @@ export function EyeIcon({ className }: IconProps) {
     </svg>
   );
 }
+
+// Case study icons (Figma 1020:1040, 1020:1394, 973:1919, 1020:1490, 1020:1487).
+
+export function ArrowLeftIcon({ className }: IconProps) {
+  return (
+    <svg className={className} width="11" height="10" viewBox="0 0 11 10" fill="none" aria-hidden="true">
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M5.35615 0.146724C5.55178 0.342355 5.55178 0.659536 5.35615 0.855168L1.71003 4.50128H10.2539C10.5306 4.50128 10.7549 4.72556 10.7549 5.00223C10.7549 5.27889 10.5306 5.50317 10.2539 5.50317H1.71064L5.35615 9.14868C5.55178 9.34431 5.55178 9.6615 5.35615 9.85713C5.16052 10.0528 4.84333 10.0528 4.6477 9.85713L0.146724 5.35615C-0.0489079 5.16052 -0.0489079 4.84333 0.146724 4.6477L4.6477 0.146724C4.84333 -0.0489079 5.16052 -0.0489079 5.35615 0.146724Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+export function ArrowRightIcon({ className }: IconProps) {
+  return (
+    <svg className={className} width="11" height="10" viewBox="0 0 11 10" fill="none" aria-hidden="true">
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M5.39874 9.85718C5.2031 9.66155 5.2031 9.34437 5.39874 9.14874L9.04485 5.50262L0.500974 5.50262C0.224309 5.50262 2.80697e-05 5.27834 2.80939e-05 5.00168C2.81181e-05 4.72501 0.224309 4.50073 0.500974 4.50073L9.04425 4.50073L5.39874 0.855223C5.2031 0.659591 5.2031 0.342411 5.39874 0.146779C5.59437 -0.0488524 5.91155 -0.0488524 6.10718 0.146779L10.6082 4.64776C10.8038 4.84339 10.8038 5.16057 10.6082 5.3562L6.10718 9.85718C5.91155 10.0528 5.59437 10.0528 5.39874 9.85718Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+export function ChevronUpIcon({ className }: IconProps) {
+  return (
+    <svg className={className} width="20" height="10" viewBox="0 0 20 10" fill="none" aria-hidden="true">
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M10 0C10.2656 0 10.5204 0.09591 10.7082 0.266631L19.7067 8.44596C20.0978 8.80147 20.0978 9.37786 19.7067 9.73337C19.3156 10.0889 18.6814 10.0889 18.2903 9.73337L10 2.19774L1.70968 9.73337C1.31857 10.0889 0.684447 10.0889 0.293334 9.73337C-0.0977781 9.37786 -0.0977781 8.80147 0.293334 8.44596L9.29183 0.266631C9.47965 0.09591 9.73438 0 10 0Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+export function PlusIcon({ className }: IconProps) {
+  return (
+    <svg className={className} width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M7 0C7.38718 0 7.70105 0.313873 7.70105 0.701054V6.29895H13.2989C13.6861 6.29895 14 6.61282 14 7C14 7.38718 13.6861 7.70105 13.2989 7.70105H7.70105V13.2989C7.70105 13.6861 7.38718 14 7 14C6.61282 14 6.29895 13.6861 6.29895 13.2989V7.70105H0.701054C0.313873 7.70105 0 7.38718 0 7C0 6.61282 0.313873 6.29895 0.701054 6.29895H6.29895V0.701054C6.29895 0.313873 6.61282 0 7 0Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+export function MinusIcon({ className }: IconProps) {
+  return (
+    <svg className={className} width="13" height="1" viewBox="0 0 13 1" fill="none" aria-hidden="true">
+      <path d="M0.5 0.5H12.5" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}

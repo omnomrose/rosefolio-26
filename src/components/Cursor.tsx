@@ -4,9 +4,13 @@ import { createContext, useCallback, useContext, useEffect, useRef, useState, ty
 import { gsap } from "gsap";
 import { EyeIcon } from "./Icons";
 
-type CursorContextValue = { setLabel: (label: string | null) => void };
+type CursorContextValue = {
+  setLabel: (label: string | null) => void;
+  /** Hide the custom cursor, e.g. over an iframe where it can't track the pointer. */
+  setHidden: (hidden: boolean) => void;
+};
 
-const CursorContext = createContext<CursorContextValue>({ setLabel: () => {} });
+const CursorContext = createContext<CursorContextValue>({ setLabel: () => {}, setHidden: () => {} });
 
 export const useCursorLabel = () => useContext(CursorContext);
 
@@ -21,6 +25,8 @@ export default function CursorProvider({ children }: { children: ReactNode }) {
   const rootRef = useRef<HTMLDivElement | null>(null);
   const squareRef = useRef<HTMLDivElement | null>(null);
   const labelRef = useRef<HTMLDivElement | null>(null);
+  const bodyRef = useRef<HTMLDivElement | null>(null);
+  const [hidden, setHidden] = useState(false);
 
   // Keep the last label text so it doesn't blank out while fading away.
   const [labelText, setLabelText] = useState("");
@@ -84,8 +90,13 @@ export default function CursorProvider({ children }: { children: ReactNode }) {
     });
   }, [label]);
 
+  useEffect(() => {
+    if (!bodyRef.current) return;
+    gsap.to(bodyRef.current, { autoAlpha: hidden ? 0 : 1, duration: 0.15, overwrite: true });
+  }, [hidden]);
+
   return (
-    <CursorContext.Provider value={{ setLabel }}>
+    <CursorContext.Provider value={{ setLabel, setHidden }}>
       {children}
       {enabled && (
         <div
@@ -93,6 +104,7 @@ export default function CursorProvider({ children }: { children: ReactNode }) {
           aria-hidden="true"
           className="pointer-events-none invisible fixed top-0 left-0 z-50 opacity-0"
         >
+          <div ref={bodyRef}>
           <div ref={squareRef} className="absolute size-[15px] -translate-x-1/2 -translate-y-1/2 bg-primary-200" />
           <div
             ref={labelRef}
@@ -100,6 +112,7 @@ export default function CursorProvider({ children }: { children: ReactNode }) {
           >
             <EyeIcon className="h-[10.004px] w-[15.006px] text-surface-200" />
             <span className="type-caption text-surface-200 uppercase">{labelText}</span>
+          </div>
           </div>
         </div>
       )}

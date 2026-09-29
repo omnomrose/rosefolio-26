@@ -88,6 +88,10 @@ Use these names exactly. Map them into the Tailwind theme with names that mirror
 | space-6 | 28 |
 | space-7 | 32 |
 | space-8 | 36 |
+| space-11 | 48 |
+| space-13 | 60 |
+| space-15 | 68 |
+| space-17 | 76 |
 
 ### Typography (desktop/*)
 | Token | Family / style | Size | Line height | Letter spacing |
@@ -98,6 +102,10 @@ Use these names exactly. Map them into the Tailwind theme with names that mirror
 | body-md | Geist Regular | 14 | 100% | -2% |
 | caption | Geist Mono Regular | 14 | 100% | 0 |
 | caption-sm | Geist Mono Regular | 12 | 100% | 0 |
+| title-xl | Geist Regular | 24 | 100% | 0 |
+| title-lg | Geist Medium | 18 | 100% | 0 |
+| label-lg | Geist Regular | 16 | 100% | 0 |
+| body/16 (`type-body-16`) | Geist Regular | 16 | 141% | 0 |
 
 All type tokens are weight 400. Letter spacing values are percentages (confirmed).
 
@@ -165,6 +173,11 @@ Decisions from Rose:
 - Shader covers (Whether, Still): export the shader background flat, then overlay Rose's GIF centered at the exact Figma size. No WebGPU shaders in the browser.
 - Heavy media is converted for the web: GIFs → animated WebP (keeps transparency), videos → 1280px H.264 MP4 (muted, looping) with a poster frame.
 - AR Glasses card uses Rose's inventory POV video as its cover.
+- Case studies: each has its own sidebar (back home, title, summary, scroll-synced section nav, previous / read next, contact). No vinyl player on case study pages. Template: `src/content/work/<slug>.tsx` (meta + Body) registered in `src/content/work/index.ts`, rendered at `/work/[slug]`.
+- All dark text uses surface-200 (#1e1e1e), even where a Figma frame shows #2f2b29 / text-black-light.
+- Case study meta labels (ROLE, TIMELINE…) stay primary-300 as designed (Rose), despite ~3.7:1 contrast.
+- Whether: previous → Still (disabled until its page exists), next → Mitchie Matcha. Feature buttons switch the embedded demo (whether-demo.vercel.app#home/#digitize/#personalize/#closet); up/down buttons step through features. Custom cursor hides over the iframe.
+- Problem collages are flattened images; quote bubbles are live text laid over them.
 - Repo: github.com/omnomrose/rosefolio-26 (Rose pushes; Claude's GitHub app isn't installed on it).
 
 ## 10. Open questions
