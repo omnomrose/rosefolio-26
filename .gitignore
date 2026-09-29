@@ -43,3 +43,5 @@ next-env.d.ts
 # source audio (copied to public/audio)
 /audios
 .DS_Store
+
+AGENTS.md
