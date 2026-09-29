@@ -1,12 +1,7 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import LetterCard from "@/components/about/LetterCard";
 import Sticker from "@/components/about/Sticker";
 import { box, boxHeading, boxItems, stageHeight, stickersAbove, stickersBelow } from "@/content/about";
-
-export const metadata: Metadata = {
-  title: "About — Rose Nguyen",
-};
 
 /*
  * About (Figma 973:1160). A collage stage over the content area (columns 4–12): the letter card

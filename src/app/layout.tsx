@@ -14,7 +14,7 @@ const pixel = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Rose Nguyen — Product Designer",
+  title: "rose nguyen | product designer",
   description: "Designing digital & tangible products for people, with people.",
 };
 

@@ -12,7 +12,8 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps<"/work/[slug]">): Promise<Metadata> {
   const { slug } = await params;
   const study = caseStudyPages[slug];
-  return study ? { title: `${study.meta.title} — Rose Nguyen`, description: study.meta.summary } : {};
+  // Tab title stays the site title on every page (Rose); only the description is per study.
+  return study ? { description: study.meta.summary } : {};
 }
 
 /*
