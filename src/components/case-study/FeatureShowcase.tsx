@@ -134,9 +134,9 @@ export default function FeatureShowcase({
         </div>
       </div>
 
-      {/* Prototype slot (973:1940, 455 × 634). The demo's ?embed=1 mode renders just the
+      {/* Prototype slot (973:1940, 383 × 634). The demo's ?embed=1 mode renders just the
           phone (393:852) on a transparent page, so the iframe is sized to that ratio and centred. */}
-      <div className="relative flex h-[634px] w-[455px] shrink-0 justify-center">
+      <div className="relative flex h-[634px] w-[383px] shrink-0 justify-center">
         <iframe
           ref={iframeRef}
           src={`${demoUrl}?embed=1#${features[0].hash}`}

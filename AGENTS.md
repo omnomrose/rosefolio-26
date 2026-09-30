@@ -88,10 +88,12 @@ Use these names exactly. Map them into the Tailwind theme with names that mirror
 | space-6 | 28 |
 | space-7 | 32 |
 | space-8 | 36 |
+| space-9 | 40 |
 | space-10 | 44 |
 | space-11 | 48 |
 | space-13 | 60 |
 | space-15 | 68 |
+| space-16 | 72 |
 | space-17 | 76 |
 
 ### Typography (desktop/*)
@@ -135,19 +137,20 @@ This list comes from the Home frame only. Other frames may use more variables. P
 
 Every case study uses the same shell. Reference: Whether (Figma 973:1879, sidebar 973:1975).
 
-**Side nav (required on every case study, same component: `CaseStudySidebar`)**
-- Replaces the main sidebar (no vinyl player, no [WORK]/[ABOUT] nav).
-- Top to bottom: `← BACK HOME` → 44px (space-10) → title (heading-lg, 141% line height, -5% tracking) → 20px (space-4) → summary (body-xl) → 76px (space-17) → section nav → footer.
-- Section nav: 14px padding, 20px gap, Geist Mono 16 / -2% / uppercase, 21px line box; inactive rows are 17px tall (surface-150, hover primary-300); the active row shows a 9px primary-200 square (surface-200 text). Active item follows the scroll position; clicking smooth-scrolls to the section (first item scrolls to the top).
-- Footer: `← PREVIOUS` / `READ NEXT →` (caption, surface-150), then contact links (24px gap).
-- The side nav never scrolls. The block holding the section nav + footer is 530px tall and shrinks on short screens so the footer always stays visible with 36px bottom padding.
+**Side nav (required on every case study, same component: `CaseStudySidebar`)** — Figma 973:1975
+- Replaces the main sidebar (no vinyl player). 858px tall, 36px padding: top group and footer with space between.
+- Top group: `← BACK HOME` (Geist Mono 16, -2%) → 44px (space-10) → title (heading-lg, 141% line height, -5% tracking) → 20px (space-4) → summary (body-xl, surface-150) → 40px (space-9) → CONTENTS block.
+- CONTENTS block (1129:2537), same language as the main nav (1129:2538): "CONTENTS" (caption, surface-200) → 24px (space-5) → list indented 20px (space-4). Each row: `01 [SECTION]` (caption, uppercase, numbered from `meta.sections`, 18px line box) → 20px → 1px surface-10 divider → 20px. Active row: 10px primary-200 square + 8px gap, surface-200 text; inactive surface-150 (hover primary-300). Scroll mode follows the scroll position; tabs mode switches tabs.
+- Footer: `← PREVIOUS` / `READ NEXT →` (caption, surface-150) → 24px → contact links.
+- Never scrolls: on short screens the space between the top group and the footer shrinks (gaps compact below 908px tall), so the footer always shows with 36px bottom padding.
+- Content panel side padding is per study: `meta.inset` "standard" = 36px (space-8, content 999 wide; Mitchie Matcha) or "wide" = 72px (space-16, content 927 wide; Whether). The hero stays 413px tall either way.
 
 **Adding a case study**
 1. Create `src/content/work/<slug>.tsx` exporting `meta` (title, summary, sections, previous/next, hero, details) and `Body`.
 2. Register it in `src/content/work/index.ts`. It renders at `/work/<slug>`.
 3. Section ids in `meta.sections` must match the `id`s in `Body` (each section: `tabIndex={-1}`, `outline-none`).
 4. Build `Body` from `src/components/case-study/*` blocks; add new blocks there rather than one-off markup.
-5. Content panel: surface-100, sticker-shadow, 36px padding, columns 4–12. Hero + header (`CaseStudyHeader`) come from `meta`.
+5. Content panel: surface-100, sticker-shadow, 36px padding (72px sides with `inset: "wide"`), columns 4–12. Hero + header (`CaseStudyHeader`) come from `meta`.
 6. Images go in `public/images/work/<slug>/` as WebP at 2x the Figma size.
 
 ## 6. Interactions and motion (GSAP)
@@ -197,7 +200,7 @@ Decisions from Rose:
 - All dark text uses surface-200 (#1e1e1e), even where a Figma frame shows #2f2b29 / text-black-light.
 - Case study meta labels (ROLE, TIMELINE…) stay primary-300 as designed (Rose), despite ~3.7:1 contrast.
 - Whether: previous → Still (disabled until its page exists), next → Mitchie Matcha. Feature buttons switch the embedded demo (whether-demo.vercel.app#home/#digitize/#personalize/#closet); up/down buttons step through features. The demo is loaded with `?embed=1` (source: ~/Desktop/clothing-demo/web, deployed to Vercel as whether-demo): phone only, transparent page, no reset pill; it posts `whether-demo:pointer` {x, y} to the parent so the pink square keeps following over the phone.
-- Problem collages are flattened images; quote bubbles are live text laid over them.
+- Problem collages are flattened 2x images with the quote bubbles baked in (they scale with the 420px card); the quote is repeated as screen-reader text.
 - Repo: github.com/omnomrose/rosefolio-26 (Rose pushes; Claude's GitHub app isn't installed on it).
 - Mitchie Matcha (973:19999 / 973:20089 / 973:20168): one page, three tabs (`meta.navigation: "tabs"`). The side nav switches tabs (URL hash = tab id); header details (415:3331 / 754:1048 / 767:1460) and image grid swap per tab; CONTEXT is shared. "/METRICS" dropped from the first tab label until metrics exist. Previous → Whether, next → AR Glasses.
 - One header size for every case study (Whether's): hero 999 × 413, 172px title column, 668px details row.

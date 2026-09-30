@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: PageProps<"/work/[slug]">): P
 
 /*
  * Shared case study template: a sticker-shadow panel spanning columns 4–12 (1071px at 1512),
- * 36px padding, hero + header, then the study's own sections.
+ * 36px padding (72px at the sides for `inset: "wide"`), hero + header, then the study's own sections.
  */
 export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]">) {
   const { slug } = await params;
@@ -28,7 +28,11 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
 
   return (
     // Fills at least the viewport so placeholder pages (no hero) still read as a panel.
-    <article className="flex min-h-[calc(100dvh-2*var(--spacing-space-8))] w-full flex-col bg-surface-100 p-space-8 shadow-sticker">
+    <article
+      className={`flex min-h-[calc(100dvh-2*var(--spacing-space-8))] w-full flex-col bg-surface-100 p-space-8 shadow-sticker ${
+        meta.inset === "wide" ? "px-space-16" : ""
+      }`}
+    >
       {meta.hero && <CaseStudyHeader meta={meta} />}
       <Body />
     </article>

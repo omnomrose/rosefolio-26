@@ -7,6 +7,7 @@ import TakeawayCard from "@/components/case-study/TakeawayCard";
 // Figma: "Whether | Case Study #1" (973:1879).
 export const meta: CaseStudyMeta = {
   slug: "whether",
+  inset: "wide",
   title: "Whether",
   summary: "A digital closet that recommends outfits curated to the weather and your personal wardrobe.",
   sections: [
@@ -66,7 +67,7 @@ export function Body() {
   return (
     <>
       {/* CONTEXT (973:1904) */}
-      <section id="context" tabIndex={-1} aria-labelledby="context-heading" className="mt-space-11 w-[787px] max-w-full outline-none">
+      <section id="context" tabIndex={-1} aria-labelledby="context-heading" className="mt-space-11 w-[650px] max-w-full outline-none">
         <SectionHeading id="context-heading" label="Context" title="What do I even wear?" gap="gap-space-1" />
         <p className="type-body-xl mt-space-3 text-surface-200">
           I find myself running behind schedule because I can’t figure out what to wear. Looking outside the window
@@ -92,7 +93,6 @@ export function Body() {
                 “It’s <strong className="font-bold">too hot</strong> for this....”
               </>
             }
-            quotePosition={{ left: "37.5%", top: "10.73%" }}
           />
           <ProblemCard
             image="/images/work/whether/problem-repeat.webp"
@@ -104,7 +104,6 @@ export function Body() {
                 yesterday...”
               </>
             }
-            quotePosition={{ left: "5.26%", top: "10.73%" }}
           />
         </div>
 

@@ -4,7 +4,7 @@ import TabPanel from "./TabPanel";
 
 /*
  * Hero thumbnail (973:1972) + case study header (973:1880). One size for every case study
- * (Rose): hero box 999 × 413, title column + 668px details row.
+ * (Rose): hero box 413 tall across the content width, title column + 668px details row.
  */
 export default function CaseStudyHeader({ meta }: { meta: CaseStudyMeta }) {
   const tabs = meta.navigation === "tabs";
@@ -12,7 +12,7 @@ export default function CaseStudyHeader({ meta }: { meta: CaseStudyMeta }) {
 
   return (
     <header className="flex w-full flex-col gap-space-11">
-      {meta.hero && <Hero hero={meta.hero} />}
+      {meta.hero && <Hero hero={meta.hero} wide={meta.inset === "wide"} />}
 
       <div className="flex w-full flex-col gap-space-11">
         <div className="flex w-full items-start justify-between gap-space-8">
@@ -34,10 +34,12 @@ export default function CaseStudyHeader({ meta }: { meta: CaseStudyMeta }) {
   );
 }
 
-function Hero({ hero }: { hero: CaseStudyHero }) {
+function Hero({ hero, wide }: { hero: CaseStudyHero; wide: boolean }) {
+  // 413px tall in Figma at either content width: 999 (standard) or 927 (wide inset).
+  const box = wide ? "aspect-[927/413]" : "aspect-[999/413]";
   if (hero.kind === "photo") {
     return (
-      <div className="relative aspect-[999/413] w-full overflow-hidden">
+      <div className={`relative w-full overflow-hidden ${box}`}>
         <Image src={hero.src} alt={hero.alt} fill priority sizes="(min-width: 1512px) 999px, 66vw" className="object-cover" />
       </div>
     );
@@ -45,7 +47,7 @@ function Hero({ hero }: { hero: CaseStudyHero }) {
   // Shader background is a flat export; Rose's animated WebP sits on top at the exact Figma
   // box (573.568 × 394.59 at 213, 18 inside 999 × 413), cropped the same way (122.3% wide, −11.15%).
   return (
-    <div className="relative aspect-[999/413] w-full overflow-hidden">
+    <div className={`relative w-full overflow-hidden ${box}`}>
       <Image src={hero.background} alt="" fill priority sizes="(min-width: 1512px) 999px, 66vw" className="object-cover" />
       <div className="absolute bottom-0 left-[21.32%] aspect-[573.568/394.59] h-[95.54%] overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
