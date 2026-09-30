@@ -4,6 +4,9 @@
  * Design tokens — mirrored 1:1 from the Figma variables in rosefolio-26-27.
  * Never add a value here that isn't a Figma variable (see AGENTS.md §2).
  */
+/* Sidebar fit: below 908px tall the main sidebar compacts so the contact links stay on screen. */
+@custom-variant short (@media (max-height: 907px));
+
 @theme {
   /* colours/surface */
   --color-surface-10: rgb(47 43 41 / 0.1);
@@ -146,6 +149,17 @@
   --grid-gutter: 36px;
   --grid-col: calc((100% - 2 * var(--grid-margin) - 11 * var(--grid-gutter)) / 12);
   --sidebar-width: max(369px, calc(var(--grid-margin) + 3 * var(--grid-col) + 2 * var(--grid-gutter)));
+}
+
+:root {
+  /* Vinyl player row (vinyl + controls). Figma size is 240px; on short screens it shrinks
+     with the viewport (never below 160px) so the whole sidebar fits without scrolling. */
+  --player-row: 240px;
+}
+@media (max-height: 907px) {
+  :root {
+    --player-row: clamp(160px, 100dvh - 612px, 240px);
+  }
 }
 
 html,

@@ -158,7 +158,7 @@ Every case study uses the same shell. Reference: Whether (Figma 973:1879, sideba
 | Vinyl record | Spins like a real record (constant ~33 RPM, eases up on play and winds down on pause — do NOT copy the Figma keyframes). Spins while music plays and stops or pauses when music pauses. Previous, play/pause, and next controls. Thumbnails switch tracks. A status line shows the state (for example "PAUSED: [song] — [artist]"). | Sidebar (all pages) |
 | Letter/card tilt | On hover, the card tilts toward the cursor position | About |
 | Card flip | On click, the card flips to its back | About |
-| Nav expand | Hovering the active [WORK] tab expands the case study list (Figma 1016:23139 → 1016:23343); rows highlight on hover (surface-110 fill, surface-200 text). | Sidebar |
+| Nav (CONTENTS block) | Figma 1129:2538: "CONTENTS" label, then 01 [WORK] / 02 [ABOUT] / 03 [FRIDGE], all Geist Mono 14 (caption). Active = primary-200 square + surface-200 text; inactive = surface-150; dividers surface-10. Hovering the active [WORK] tab expands the case study list (Geist Mono, uppercase); rows highlight on hover (surface-110 fill, surface-200 text). Identity→nav gap 16, nav→player gap 44 (1110:2459). | Sidebar (home, about, fridge) |
 | Fridge canvas | Open canvas of works and interests (spec TBD) | Fridge |
 | Custom cursor | Site-wide 15×15 primary-200 square (Rose resized from Figma node 1040:2267) that follows the mouse smoothly (GSAP lerp) at all times. | Global |
 | Case study cursor | On card hover, the cursor becomes a label frame. Whether and Mitchie Matcha: "VIEW CASE STUDY". AR Glasses: "COMING SOON". Still: "VIEW DESIGNATHON". Label frames: nodes 1036:2253, 1038:2261, 1038:2264. | Home |
@@ -204,6 +204,8 @@ Decisions from Rose:
 - Case study images are Figma's own 2x PNG renders of each image layer (crops + image adjustments baked in), converted to WebP. The 20 Mitchie layers carry 2x PNG export settings; `public/images/work/mitchie-matcha/_figma-export/convert.py` maps layer names → WebP files.
 - AR Glasses for Retail: placeholder page in the case study shell (nav "Coming soon", empty panel).
 - About (973:1160; letter back 1100:2442): collage pinned to the content-area centre (positions in `src/content/about.ts`). Stickers and box items are draggable (GSAP Draggable): they follow the pointer 1:1 — no bounds, lift or easing — and stay where dropped. Letter tilts subtly (max 4°) and flips on click/Enter/Space; no flip hint (Rose). Back links (Instagram handles, contact links) are clickable once flipped. Design-system values only: letter shadow = sticker-shadow, card fill (both faces) = surface-100 (Rose; no paper texture), box heading = heading-lg, letter padding 40 → space-8, message gap 14.973 → space-3, back gap 38 → space-8. Images: Figma's 2x exports of the hifi layers with rotation + sticker-shadow baked in, placed at the layer's bounding box minus the shadow spread (5.6 left, 3.6 top); portrait is a 3x export; back logo is Rose's 2x PNG (shadow included) as WebP. `public/images/about/_figma-export/convert.py` makes the WebPs.
+
+- Sidebar fit (Rose): below 908px viewport height the main sidebar compacts (smaller gaps, vinyl/covers scale via `--player-row`, min 160px) so contact links show without scrolling. Figma sizes apply at ≥908px.
 
 ## 10. Open questions
 

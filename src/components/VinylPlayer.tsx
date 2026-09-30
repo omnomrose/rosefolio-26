@@ -82,7 +82,7 @@ export default function VinylPlayer() {
   const status = `${playing ? "Playing" : "Paused"}: ${track.title} — ${track.artist}`;
 
   return (
-    <div className="flex w-full flex-col gap-space-8">
+    <div className="flex w-full flex-col gap-space-8 short:gap-space-4">
       <audio
         ref={audioRef}
         preload="none"
@@ -91,13 +91,13 @@ export default function VinylPlayer() {
         onPlay={() => setPlaying(true)}
       />
 
-      <div className="flex h-[240px] w-full items-center justify-between">
+      <div className="flex h-[var(--player-row)] w-full items-center justify-between">
         <div className="flex h-full flex-col items-center gap-space-2">
           <button
             type="button"
             onClick={toggle}
             aria-label={playing ? `Pause ${track.title}` : `Play ${track.title}`}
-            className="relative size-[210px] shrink-0 rounded-full"
+            className="relative size-[calc(var(--player-row)-30px)] shrink-0 rounded-full"
           >
             <div ref={discRef} className="absolute inset-0 rounded-full shadow-sticker will-change-transform">
               <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-full">
@@ -142,7 +142,7 @@ export default function VinylPlayer() {
           </div>
         </div>
 
-        <ul className="flex h-[240px] flex-col justify-between" aria-label="Music selection">
+        <ul className="flex h-[var(--player-row)] flex-col justify-between" aria-label="Music selection">
           {tracks.map((t, i) => (
             <li key={t.slug}>
               <button
@@ -150,7 +150,7 @@ export default function VinylPlayer() {
                 onClick={() => select(i, true)}
                 aria-label={`${t.title} by ${t.artist}`}
                 aria-current={i === index ? "true" : undefined}
-                className={`relative block size-[40px] border ${
+                className={`relative block size-[min(40px,calc((var(--player-row)-24px)/5))] border ${
                   i === index ? "border-primary-300" : "border-transparent"
                 }`}
               >

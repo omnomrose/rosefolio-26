@@ -7,15 +7,15 @@ import { gsap } from "gsap";
 import { caseStudies } from "@/content/caseStudies";
 
 const tabs = [
-  { key: "work", label: "[WORK]", href: "/", match: (p: string) => p === "/" || p.startsWith("/work") },
-  { key: "about", label: "[ABOUT]", href: "/about", match: (p: string) => p.startsWith("/about") },
-  { key: "fridge", label: "[FRIDGE]", href: "/fridge", match: (p: string) => p.startsWith("/fridge") },
+  { key: "work", label: "01 [WORK]", href: "/", match: (p: string) => p === "/" || p.startsWith("/work") },
+  { key: "about", label: "02 [ABOUT]", href: "/about", match: (p: string) => p.startsWith("/about") },
+  { key: "fridge", label: "03 [FRIDGE]", href: "/fridge", match: (p: string) => p.startsWith("/fridge") },
 ];
 
 /*
- * Nav — Figma variants "work-active" (1016:23139) and "work-expanded" (1016:23343).
- * Per the prototype, hovering the active [WORK] tab expands the case study list;
- * hovering a case study row highlights it (surface-110 fill, surface-200 text).
+ * Nav — "CONTENTS" block (Figma 1129:2538). Everything is Geist Mono 14 (desktop/caption).
+ * Behaviour is unchanged from the earlier variants (1016:23139 → 1016:23343): hovering the
+ * active [WORK] tab expands the case study list; hovering a row highlights it.
  */
 export default function Nav() {
   const pathname = usePathname();
@@ -26,7 +26,7 @@ export default function Nav() {
   const setExpanded = (open: boolean) => setExpandedOn(open ? pathname : null);
   const listRef = useRef<HTMLDivElement | null>(null);
 
-  // Smoothly open/close the list.
+  // Smoothly open/close the case study list.
   useEffect(() => {
     const el = listRef.current;
     if (!el) return;
@@ -43,8 +43,11 @@ export default function Nav() {
   }, [expanded, workActive]);
 
   return (
-    <nav aria-label="Main" className="w-full">
-      <ul className="flex w-full flex-col gap-space-2">
+    <nav aria-labelledby="nav-contents" className="flex w-full flex-col gap-space-4 rounded-2 bg-surface-100 py-space-4 short:py-space-2">
+      <p id="nav-contents" className="type-caption text-surface-200 uppercase">
+        Contents
+      </p>
+      <ul className="flex w-full flex-col gap-space-4 pl-space-4">
         {tabs.map((tab) => {
           const active = tab.match(pathname);
           const isWork = tab.key === "work";
@@ -66,15 +69,15 @@ export default function Nav() {
                 href={tab.href}
                 aria-current={active ? "page" : undefined}
                 aria-expanded={isWork && workActive ? expanded : undefined}
-                className={`flex w-full flex-col ${active ? "h-[31px] justify-center gap-space-1" : "gap-[14px]"}`}
+                className={`flex w-full flex-col ${active ? "gap-space-2" : "gap-[14px]"}`}
               >
                 <span className="flex items-center gap-space-1">
-                  {active && <span aria-hidden="true" className="size-[10px] bg-primary-200" />}
-                  <span className={`type-caption text-surface-200 uppercase ${active ? "font-bold" : ""}`}>
+                  {active && <span aria-hidden="true" className="size-[10px] shrink-0 bg-primary-200" />}
+                  <span className={`type-caption uppercase ${active ? "text-surface-200" : "text-surface-150"}`}>
                     {tab.label}
                   </span>
                 </span>
-                <span aria-hidden="true" className="block h-px w-full bg-surface-200" />
+                <span aria-hidden="true" className="block h-px w-full bg-surface-10" />
               </Link>
 
               {isWork && workActive && (
@@ -82,7 +85,7 @@ export default function Nav() {
                   <ul aria-label="Case studies" className="flex flex-col gap-space-2">
                     {caseStudies.map((study) => {
                       const rowClass =
-                        "type-body-md block w-full rounded-1 py-space-0 pl-space-6 text-surface-150 transition-colors hover:bg-surface-110 hover:text-surface-200";
+                        "type-caption block w-full rounded-1 py-space-0 pl-space-6 text-surface-150 uppercase transition-colors hover:bg-surface-110 hover:text-surface-200";
                       return (
                         <li key={study.slug}>
                           {study.href?.startsWith("http") ? (
