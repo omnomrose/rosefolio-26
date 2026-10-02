@@ -69,19 +69,19 @@ export function Body() {
       {/* CONTEXT (973:1904) */}
       <section id="context" tabIndex={-1} aria-labelledby="context-heading" className="mt-space-11 w-[650px] max-w-full outline-none">
         <SectionHeading id="context-heading" label="Context" title="What do I even wear?" gap="gap-space-1" />
-        <p className="type-body-xl mt-space-3 text-surface-200">
+        <p className="type-body-16 mt-space-3 text-surface-200">
           I find myself running behind schedule because I can’t figure out what to wear. Looking outside the window
           just isn’t enough to determine whether the outfit I have on will last me throughout the day.
         </p>
       </section>
 
       {/* PROBLEM (1020:1425) + How might I (1020:1443) */}
-      <section id="problem" tabIndex={-1} aria-labelledby="problem-heading" className="mt-space-13 outline-none">
+      <section id="problem" tabIndex={-1} aria-labelledby="problem-heading" className="mt-space-17 outline-none">
         <SectionHeading
           id="problem-heading"
           label="Problem"
           title="People who struggle with coming up with an outfit run into:"
-          gap="gap-space-0"
+          gap="gap-space-1"
         />
         <div className="mt-space-11 flex w-full items-start justify-between gap-space-8">
           <ProblemCard
@@ -107,7 +107,7 @@ export function Body() {
           />
         </div>
 
-        <div className="mt-space-15 flex w-full items-center justify-center rounded-1 border border-surface-50 px-space-2 py-space-4">
+        <div className="mt-space-11 flex w-full items-center justify-center rounded-1 border border-surface-50 px-space-2 py-space-4">
           <p className="type-label-lg w-[555px] max-w-full text-center text-surface-150 uppercase">
             How might I guide the process of coming up with potential outfits for people on a time crunch?
           </p>
@@ -115,7 +115,7 @@ export function Body() {
       </section>
 
       {/* SOLUTION (1029:1720) */}
-      <section id="solution" tabIndex={-1} aria-labelledby="solution-heading" className="mt-space-15 outline-none">
+      <section id="solution" tabIndex={-1} aria-labelledby="solution-heading" className="mt-space-17 outline-none">
         <FeatureShowcase
           demoUrl="https://whether-demo.vercel.app/"
           prototypeTitle="Whether interactive prototype"
@@ -135,14 +135,14 @@ export function Body() {
       </section>
 
       {/* TAKEAWAYS (973:1941) */}
-      <section id="takeaways" tabIndex={-1} aria-labelledby="takeaways-heading" className="mt-space-13 outline-none">
-        <div className="flex w-[419px] max-w-full flex-col gap-space-2">
-          <h2 id="takeaways-heading" className="type-body-16 text-surface-150 uppercase">
+      <section id="takeaways" tabIndex={-1} aria-labelledby="takeaways-heading" className="mt-space-17 outline-none">
+        <div className="flex w-[419px] max-w-full flex-col gap-space-1">
+          <h2 id="takeaways-heading" className="type-label-lg text-surface-150 uppercase">
             Takeaways
           </h2>
           <p className="type-title-xl text-surface-200">What did I takeaway from all of this?</p>
         </div>
-        <div className="mt-[40px] flex w-full items-stretch gap-space-8">
+        <div className="mt-space-11 flex w-full items-stretch gap-space-8">
           <TakeawayCard title="What tools stuck?" className="min-w-0 flex-1">
             This app was definitely more on the experimental side! The development process acted a canvas to see what
             tools could be integrated into my workflow. The best framework to go about it is to define the Task →

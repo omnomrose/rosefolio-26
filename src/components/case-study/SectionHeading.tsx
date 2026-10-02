@@ -8,7 +8,7 @@ export function SectionHeading({
   id: string;
   label: string;
   title: string;
-  /** Spacing token between label and title — varies per section in Figma. */
+  /** Spacing token between label and title. Case studies use gap-space-1 (8px) everywhere. */
   gap: string;
 }) {
   return (

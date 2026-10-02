@@ -145,6 +145,13 @@ Every case study uses the same shell. Reference: Whether (Figma 973:1879, sideba
 - Never scrolls: on short screens the space between the top group and the footer shrinks (gaps compact below 908px tall), so the footer always shows with 36px bottom padding.
 - Content panel side padding is per study: `meta.inset` "standard" = 36px (space-8, content 999 wide; Mitchie Matcha) or "wide" = 72px (space-16, content 927 wide; Whether). The hero stays 413px tall either way.
 
+**Content rhythm (Rose, Oct 1 — deliberate deviation from the Whether frame's mixed gaps)**
+- Between sections: 76px (space-17). Inside a section (heading → content, content → content): 48px (space-11).
+- Eyebrow label (label-lg, surface-150, uppercase) → title: 8px (space-1). Heading block → paragraph: 16px (space-3).
+- All running text (paragraphs, card copy, feature descriptions): body/16 (`type-body-16`, 141% line height).
+- Takeaway cards: surface-100 fill, surface-10 stroke (Figma 973:1945).
+- Whether feature stepper (973:1917): the two round buttons are 24px apart (space-5, Rose; Figma shows 32).
+
 **Adding a case study**
 1. Create `src/content/work/<slug>.tsx` exporting `meta` (title, summary, sections, previous/next, hero, details) and `Body`.
 2. Register it in `src/content/work/index.ts`. It renders at `/work/<slug>`.

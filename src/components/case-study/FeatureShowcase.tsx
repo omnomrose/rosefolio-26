@@ -81,7 +81,7 @@ export default function FeatureShowcase({
         {intro}
 
         <div className="flex items-start gap-[47px]">
-          <div className="mt-[70px] flex shrink-0 flex-col gap-space-7">
+          <div className="mt-[70px] flex shrink-0 flex-col gap-space-5">
             <button type="button" className={roundBtn} aria-label="Previous feature" aria-controls={`${uid}-list`} onClick={() => step(-1)}>
               <ChevronUpIcon className="h-[10px] w-[20px]" />
             </button>
@@ -125,7 +125,7 @@ export default function FeatureShowcase({
                     aria-label={feature.title}
                     className="invisible h-0 overflow-hidden opacity-0"
                   >
-                    <p className="type-body-xl pt-[14px] text-surface-200">{feature.description}</p>
+                    <p className="type-body-16 pt-[14px] text-surface-200">{feature.description}</p>
                   </div>
                 </li>
               );
