@@ -12,7 +12,7 @@ export default function CaseStudyHeader({ meta }: { meta: CaseStudyMeta }) {
 
   return (
     <header className="flex w-full flex-col gap-space-11">
-      {meta.hero && <Hero hero={meta.hero} wide={meta.inset === "wide"} />}
+      {meta.hero && <Hero hero={meta.hero} />}
 
       <div className="flex w-full flex-col gap-space-11">
         <div className="flex w-full items-start justify-between gap-space-8">
@@ -34,13 +34,13 @@ export default function CaseStudyHeader({ meta }: { meta: CaseStudyMeta }) {
   );
 }
 
-function Hero({ hero, wide }: { hero: CaseStudyHero; wide: boolean }) {
-  // 413px tall in Figma at either content width: 999 (standard) or 927 (wide inset).
-  const box = wide ? "aspect-[927/413]" : "aspect-[999/413]";
+function Hero({ hero }: { hero: CaseStudyHero }) {
+  // Figma: 927 × 413 (content width inside the 72px side padding).
+  const box = "aspect-[927/413]";
   if (hero.kind === "photo") {
     return (
       <div className={`relative w-full overflow-hidden ${box}`}>
-        <Image src={hero.src} alt={hero.alt} fill priority sizes="(min-width: 1512px) 999px, 66vw" className="object-cover" />
+        <Image src={hero.src} alt={hero.alt} fill priority sizes="(min-width: 1512px) 927px, 62vw" className="object-cover" />
       </div>
     );
   }
@@ -48,7 +48,7 @@ function Hero({ hero, wide }: { hero: CaseStudyHero; wide: boolean }) {
   // box (573.568 × 394.59 at 213, 18 inside 999 × 413), cropped the same way (122.3% wide, −11.15%).
   return (
     <div className={`relative w-full overflow-hidden ${box}`}>
-      <Image src={hero.background} alt="" fill priority sizes="(min-width: 1512px) 999px, 66vw" className="object-cover" />
+      <Image src={hero.background} alt="" fill priority sizes="(min-width: 1512px) 927px, 62vw" className="object-cover" />
       <div className="absolute bottom-0 left-[21.32%] aspect-[573.568/394.59] h-[95.54%] overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={hero.overlay} alt={hero.alt} className="absolute top-0 left-[-11.15%] h-full w-[122.3%] max-w-none" />

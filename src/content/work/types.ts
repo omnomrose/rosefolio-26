@@ -36,11 +36,6 @@ export type CaseStudyMeta = {
   sections: CaseStudySection[];
   previous: Wayfinder;
   next: Wayfinder;
-  /**
-   * Content panel side padding. "standard" (default): 36px (space-8), content 999 wide.
-   * "wide": 72px (space-16), content 927 wide — Whether (Figma 1029:1722).
-   */
-  inset?: "standard" | "wide";
   /** Omit for placeholder pages (no hero or header). */
   hero?: CaseStudyHero;
   /** Scroll mode header details. Tabs mode uses each section's `details`. */

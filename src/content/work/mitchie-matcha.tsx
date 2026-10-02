@@ -63,8 +63,8 @@ export function Body() {
   return (
     <>
       {/* CONTEXT (973:20030) — same copy on every tab */}
-      <section aria-labelledby="context-heading" className="mt-space-8 flex flex-col gap-space-2">
-        <h2 id="context-heading" className="type-body-16 text-surface-150 uppercase">
+      <section aria-labelledby="context-heading" className="mt-space-11 flex flex-col gap-space-3">
+        <h2 id="context-heading" className="type-label-lg text-surface-150 uppercase">
           Context
         </h2>
         <p className="type-body-16 text-surface-200">
@@ -74,7 +74,7 @@ export function Body() {
       </section>
 
       {/* INSTAGRAM POSTS (973:20034) */}
-      <TabPanel id="instagram" tabIds={tabIds} focusable className="mt-space-8">
+      <TabPanel id="instagram" tabIds={tabIds} focusable className="mt-space-17">
         <h2 className="sr-only">Instagram posts</h2>
         <div className="flex flex-col gap-space-1">
           {/* 973:20035 — 461.39 | 529.61 at 999; right image sets the row height (577:901). */}
@@ -143,7 +143,7 @@ export function Body() {
       </TabPanel>
 
       {/* PACKAGING DESIGN (973:20121) */}
-      <TabPanel id="packaging" tabIds={tabIds} focusable className="mt-space-8">
+      <TabPanel id="packaging" tabIds={tabIds} focusable className="mt-space-17">
         <h2 className="sr-only">Packaging design</h2>
         <div className="grid grid-cols-2 gap-space-1">
           <Photo
@@ -180,7 +180,7 @@ export function Body() {
       </TabPanel>
 
       {/* MERCHANDISE (973:20202) */}
-      <TabPanel id="merchandise" tabIds={tabIds} focusable className="mt-space-8">
+      <TabPanel id="merchandise" tabIds={tabIds} focusable className="mt-space-17">
         <h2 className="sr-only">Merchandise</h2>
         <div className="grid grid-cols-2 gap-space-1">
           <Photo
@@ -197,7 +197,7 @@ export function Body() {
             src={img("merch-stickers")}
             alt="Clear bag of Mitchie Matcha stickers: green bubble-letter logos and a matcha whisk"
             className="col-span-2 aspect-[999/656.486]"
-            sizes="(min-width: 1512px) 999px, 66vw"
+            sizes="(min-width: 1512px) 927px, 62vw"
           />
         </div>
       </TabPanel>

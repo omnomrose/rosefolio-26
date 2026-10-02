@@ -143,10 +143,10 @@ Every case study uses the same shell. Reference: Whether (Figma 973:1879, sideba
 - CONTENTS block (1129:2537), same language as the main nav (1129:2538): "CONTENTS" (caption, surface-200) → 24px (space-5) → list indented 20px (space-4). Each row: `01 [SECTION]` (caption, uppercase, numbered from `meta.sections`, 18px line box) → 20px → 1px surface-10 divider → 20px. Active row: 10px primary-200 square + 8px gap, surface-200 text; inactive surface-150 (hover primary-300). Scroll mode follows the scroll position; tabs mode switches tabs.
 - Footer: `← PREVIOUS` / `READ NEXT →` (caption, surface-150) → 24px → contact links.
 - Never scrolls: on short screens the space between the top group and the footer shrinks (gaps compact below 908px tall), so the footer always shows with 36px bottom padding.
-- Content panel side padding is per study: `meta.inset` "standard" = 36px (space-8, content 999 wide; Mitchie Matcha) or "wide" = 72px (space-16, content 927 wide; Whether). The hero stays 413px tall either way.
+- Content panel padding (every case study, Rose Oct 1): 36px top/bottom (space-8), 72px sides (space-16, Figma 1029:1722); content 927 wide, hero 927 × 413.
 
-**Content rhythm (Rose, Oct 1 — deliberate deviation from the Whether frame's mixed gaps)**
-- Between sections: 76px (space-17). Inside a section (heading → content, content → content): 48px (space-11).
+**Content rhythm — every case study (Rose, Oct 1; deliberately overrides the mixed gaps in the Whether and Mitchie Matcha frames)**
+- Header divider → first section: 48px (space-11). Between sections: 76px (space-17) — in tabbed studies, Context → tab content counts as a section break. Inside a section (heading → content, content → content): 48px (space-11). Image grids keep their 8px (space-1) gutters.
 - Eyebrow label (label-lg, surface-150, uppercase) → title: 8px (space-1). Heading block → paragraph: 16px (space-3).
 - All running text (paragraphs, card copy, feature descriptions): body/16 (`type-body-16`, 141% line height).
 - Takeaway cards: surface-100 fill, surface-10 stroke (Figma 973:1945).
@@ -157,7 +157,7 @@ Every case study uses the same shell. Reference: Whether (Figma 973:1879, sideba
 2. Register it in `src/content/work/index.ts`. It renders at `/work/<slug>`.
 3. Section ids in `meta.sections` must match the `id`s in `Body` (each section: `tabIndex={-1}`, `outline-none`).
 4. Build `Body` from `src/components/case-study/*` blocks; add new blocks there rather than one-off markup.
-5. Content panel: surface-100, sticker-shadow, 36px padding (72px sides with `inset: "wide"`), columns 4–12. Hero + header (`CaseStudyHeader`) come from `meta`.
+5. Content panel: surface-100, sticker-shadow, 36px top/bottom + 72px side padding, columns 4–12. Hero + header (`CaseStudyHeader`) come from `meta`.
 6. Images go in `public/images/work/<slug>/` as WebP at 2x the Figma size.
 
 ## 6. Interactions and motion (GSAP)

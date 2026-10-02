@@ -7,7 +7,6 @@ import TakeawayCard from "@/components/case-study/TakeawayCard";
 // Figma: "Whether | Case Study #1" (973:1879).
 export const meta: CaseStudyMeta = {
   slug: "whether",
-  inset: "wide",
   title: "Whether",
   summary: "A digital closet that recommends outfits curated to the weather and your personal wardrobe.",
   sections: [
