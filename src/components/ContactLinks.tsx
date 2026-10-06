@@ -3,8 +3,7 @@ import { ArrowUpRightIcon } from "./Icons";
 const links = [
   { label: "Email", href: "mailto:m.rosengyn@gmail.com", external: false },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/maryrose-nguyen/", external: true },
-  // TODO(Rose): Google Drive link once the revised resume is uploaded.
-  { label: "Resume", href: undefined, external: true },
+  { label: "Resume", href: "https://drive.google.com/file/d/1-vjlVkLz03dQ7yPIHvvD7FoIH0TIRWdN/view?usp=sharing", external: true },
 ];
 
 export default function ContactLinks() {
