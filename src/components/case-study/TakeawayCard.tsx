@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
  * Takeaway card.
  * - "soft" (Whether 973:1946 / 973:1949): surface-10 stroke, 16 padding, body/16 copy.
  * - "outlined" (AR Glasses 973:2595, Oct 8): surface-200 stroke, radius-1, 20 padding (space-4),
- *   12 gap (space-2), body-md copy.
+ *   12 gap (space-2), body-xl copy (973:2598).
  */
 export default function TakeawayCard({
   title,
@@ -27,7 +27,7 @@ export default function TakeawayCard({
       } ${className}`}
     >
       <h3 className="type-title-lg text-surface-200">{title}</h3>
-      <p className={`${outlined ? "type-body-md" : "type-body-16"} text-surface-150`}>{children}</p>
+      <p className={`${outlined ? "type-body-xl" : "type-body-16"} text-surface-150`}>{children}</p>
     </div>
   );
 }

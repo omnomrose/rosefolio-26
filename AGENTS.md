@@ -218,7 +218,7 @@ Decisions from Rose:
   - Pain points (1158:2600, Rose Oct 8): 931-wide group centred, 32 apart (space-7), bottom-aligned; columns 267 / 300 / 300 = caption width, illustration centred above, image → caption space-5. Captions are left-aligned desktop/body-xl (100% line height, not body/16) in surface-200 (Figma's #1c1f23 "black"); `<wbr />` after "promotions/" to match Figma's line break.
   - "How might AR…" reuses Whether's box (`HowMightCard`, Rose). Restyled Oct 8 from 1207:291 (applies to Whether too): surface-100 fill, surface-30 stroke, 12 × 20 padding, sentence case, title-xl surface-150 centred (Figma's 24/141% has no text style; title-xl used).
   - Solution: `VideoSwitcher` — 999 × 562 video (radius-1), RESTOCK / CROSS-CHECK INVENTORY buttons 24 below (space-5). Hover + selected = primary-100 fill, surface-200 text (Rose). Videos always play, muted, looping.
-  - Takeaway cards (973:2594, Oct 8): `TakeawayCard variant="outlined"` — surface-200 stroke, radius-1, 20 padding (space-4), title → copy 12 (space-2), copy body-md surface-150. Whether keeps the "soft" variant.
+  - Takeaway cards (973:2594, Oct 8): `TakeawayCard variant="outlined"` — surface-200 stroke, radius-1, 20 padding (space-4), title → copy 12 (space-2), copy body-xl (16, 100%) surface-150 (973:2598). Whether keeps the "soft" variant.
   - Solution buttons share one stroke (no doubled divider between them), Geist Mono via label-lg.
   - Context + Problem text blocks are 666 wide (Figma 1158:2601).
   - TLDR (1208:296): "TLDR..." label-lg eyebrow → 12 → closing body/16 paragraph, 48 below the cards.
