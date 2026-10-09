@@ -42,21 +42,21 @@ const logos = [
   { name: "Fujiya", src: img("logo-fujiya"), width: 138.004, height: 47.344 },
 ];
 
-// Solution media (973:2576).
-// TODO(Rose): restock clip pending; cross-check uses the home card's inventory POV until confirmed.
+// Solution media (973:2576). Rose's clips, converted to 1280px H.264 (muted, looping) + poster frame.
+// TODO(Rose): cross-check clip pending (the Pop Mart shelf in Figma) → cross-check.mp4 + cross-check-poster.webp.
 const videos = [
   {
     id: "restock",
     label: "Restock inventory",
     src: "/images/work/ar-glasses-retail/restock.mp4",
-    alt: "Point-of-view video of AR glasses guiding a retail worker through restocking a shelf",
+    poster: img("restock-poster"),
+    alt: "Point-of-view video of AR glasses over a Uniqlo shelf: the worker checks stock by size, then schedules an auto-restock",
   },
   {
     id: "cross-check",
     label: "Cross-check inventory",
-    src: "/images/work/ar-glasses.mp4",
-    poster: "/images/work/ar-glasses-poster.jpg",
-    alt: "Point-of-view video of AR glasses showing product and stock info over a retail shelf",
+    src: "/images/work/ar-glasses-retail/cross-check.mp4",
+    alt: "Point-of-view video of AR glasses cross-checking stock for a product at another store",
   },
 ];
 
@@ -136,7 +136,7 @@ export function Body() {
         <VideoSwitcher videos={videos} label="Choose a task to watch" />
       </section>
 
-      {/* TAKEAWAYS (973:2583, cards 973:2594 — 23px gap → space-5 so titles stay on one line, closing 973:2582) */}
+      {/* TAKEAWAYS (973:2583, cards 973:2594, closing 973:2582) */}
       <section id="takeaways" tabIndex={-1} aria-labelledby="takeaways-heading" className="mt-space-17 outline-none">
         <div className="w-[805px] max-w-full">
           <SectionHeading
