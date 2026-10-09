@@ -97,8 +97,9 @@ export function Body() {
           ))}
         </ul>
 
-        <div className="mt-space-11 flex w-full items-end justify-between gap-space-7">
-          <PainPoint image={img("pain-restock")} alt="Halftone illustration of an open cardboard box" width={213} height={172}>
+        {/* 1158:2600: 931-wide group, 32px apart (space-7), centred, bottom-aligned. */}
+        <div className="mt-space-11 flex w-full items-end justify-center gap-space-7">
+          <PainPoint image={img("pain-restock")} alt="Halftone illustration of an open cardboard box" width={213} height={172} captionWidth={267}>
             Incoming Shipments/Restock:
             <br />
             Knowing when the next box of shipments are coming in
@@ -108,16 +109,18 @@ export function Body() {
             alt="Halftone illustration of a roll of receipt paper"
             width={194.62}
             height={226.437}
+            captionWidth={300}
           >
             Product Knowledge:
             <br />
-            Having to know specific promotions/products off the top of their heads
+            Having to know specific promotions/<wbr />products off the top of their heads
           </PainPoint>
           <PainPoint
             image={img("pain-inventory")}
             alt="Halftone illustration of a hand holding a yellow phone"
             width={162.883}
             height={206.516}
+            captionWidth={300}
           >
             Inventory:
             <br />

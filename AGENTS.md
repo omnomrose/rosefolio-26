@@ -214,8 +214,8 @@ Decisions from Rose:
 - One header size for every case study (Whether's): hero 999 × 413, 172px title column, 668px details row.
 - Case study images are Figma's own 2x PNG renders of each image layer (crops + image adjustments baked in), converted to WebP. The 20 Mitchie layers carry 2x PNG export settings; `public/images/work/mitchie-matcha/_figma-export/convert.py` maps layer names → WebP files.
 - AR Glasses for Retail (973:2419; Figma calls it "AR/VR for Retail" — title stays "AR Glasses for Retail", Rose): scroll mode, Context / Problem / Solution / Takeaways. Previous → Mitchie Matcha, next disabled until Still has a page. Home card links here with "VIEW CASE STUDY".
-  - Shared rhythm applied over Figma's mixed gaps (60/44/77/81/69/97). Logos 60 apart (space-13); pain points 32 apart (space-7), bottom-aligned, image → caption space-5; takeaway cards space-5 apart (Figma 23) so titles fit one line.
-  - Pain-point captions are DM Sans 16.117 / #1c1f23 in Figma → body/16 surface-200.
+  - Shared rhythm applied over Figma's mixed gaps (60/44/77/81/69/97). Logos 60 apart (space-13); takeaway cards space-5 apart (Figma 23) so titles fit one line.
+  - Pain points (1158:2600, Rose Oct 8): 931-wide group centred, 32 apart (space-7), bottom-aligned; columns 267 / 300 / 300 = caption width, illustration centred above, image → caption space-5. Captions are left-aligned desktop/body-xl (100% line height, not body/16) in surface-200 (Figma's #1c1f23 "black"); `<wbr />` after "promotions/" to match Figma's line break.
   - "How might AR…" reuses Whether's box (`HowMightCard`, Rose).
   - Solution: `VideoSwitcher` — 999 × 562 video (radius-1), RESTOCK / CROSS-CHECK INVENTORY buttons 24 below (space-5). Hover + selected = primary-100 fill, surface-200 text (Rose). Videos always play, muted, looping.
   - Takeaway cards use the shared `TakeawayCard` (surface-10 stroke, 16 padding) instead of Figma's surface-200 stroke / 12 padding / fixed 185 height.
