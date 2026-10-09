@@ -143,7 +143,7 @@ Every case study uses the same shell. Reference: Whether (Figma 973:1879, sideba
 - CONTENTS block (1129:2537), same language as the main nav (1129:2538): "CONTENTS" (caption, surface-200) → 24px (space-5) → list indented 20px (space-4). Each row: `01 [SECTION]` (caption, uppercase, numbered from `meta.sections`, 18px line box) → 20px → 1px surface-10 divider → 20px. Active row: 10px primary-200 square + 8px gap, surface-200 text; inactive surface-150 (hover primary-300). Scroll mode follows the scroll position; tabs mode switches tabs.
 - Footer: `← PREVIOUS` / `READ NEXT →` (caption, surface-150) → 24px → contact links.
 - Never scrolls: on short screens the space between the top group and the footer shrinks (gaps compact below 908px tall), so the footer always shows with 36px bottom padding.
-- Content panel padding (every case study, Rose Oct 1): 36px top/bottom (space-8), 72px sides (space-16, Figma 1029:1722); content 927 wide, hero 927 × 413.
+- Content panel padding (every case study, Rose Oct 8; replaces the Oct 1 72px sides): 36px top/bottom (space-8), 48px sides (space-11); content 975 wide at 1512, hero 975 × 413 (Figma's 413 height kept).
 
 **Content rhythm — every case study (Rose, Oct 1; deliberately overrides the mixed gaps in the Whether and Mitchie Matcha frames)**
 - Header divider → first section: 48px (space-11). Between sections: 76px (space-17) — in tabbed studies, Context → tab content counts as a section break. Inside a section (heading → content, content → content): 48px (space-11). Image grids keep their 8px (space-1) gutters.
@@ -157,7 +157,7 @@ Every case study uses the same shell. Reference: Whether (Figma 973:1879, sideba
 2. Register it in `src/content/work/index.ts`. It renders at `/work/<slug>`.
 3. Section ids in `meta.sections` must match the `id`s in `Body` (each section: `tabIndex={-1}`, `outline-none`).
 4. Build `Body` from `src/components/case-study/*` blocks; add new blocks there rather than one-off markup.
-5. Content panel: surface-100, sticker-shadow, 36px top/bottom + 72px side padding, columns 4–12. Hero + header (`CaseStudyHeader`) come from `meta`.
+5. Content panel: surface-100, sticker-shadow, 36px top/bottom (space-8) + 48px side padding (space-11), columns 4–12. Hero + header (`CaseStudyHeader`) come from `meta`.
 6. Images go in `public/images/work/<slug>/` as WebP at 2x the Figma size.
 
 ## 6. Interactions and motion (GSAP)
@@ -218,7 +218,7 @@ Decisions from Rose:
   - "How might AR…" reuses Whether's box (`HowMightCard`, Rose).
   - Solution: `VideoSwitcher` — 999 × 562 video (radius-1), RESTOCK / CROSS-CHECK INVENTORY buttons 24 below (space-5). Hover + selected = primary-100 fill, surface-200 text (Rose). Videos always play, muted, looping.
   - Takeaway cards use the shared `TakeawayCard` (surface-10 stroke, 16 padding) instead of Figma's surface-200 stroke / 12 padding / fixed 185 height.
-  - Hero is the 999 × 377 `background` layer cropped into the shared 927 × 413 box (Rose).
+  - Hero is the 999 × 377 `background` layer cropped into the shared hero box (Rose).
   - Images: Rose's 2x layer exports in `public/images/work/ar-glasses-retail/_figma-export/`, converted by `convert.py`.
   - Videos: Rose's `Employee-1.mp4` (4K) → `restock.mp4` (1280px H.264, no audio) + `restock-poster.webp`. The home card's `ar-glasses.mp4` is another restock take, not cross-check. Cross-check: Rose's `Employee-2.mp4` (Pop Mart, nearby-store stock check) → `cross-check.mp4` + `cross-check-poster.webp`, same settings.
 - About (973:1160; letter back 1100:2442): collage pinned to the content-area centre (positions in `src/content/about.ts`). Stickers and box items are draggable (GSAP Draggable): they follow the pointer 1:1 — no bounds, lift or easing — and stay where dropped. Letter tilts subtly (max 4°) and flips on click/Enter/Space; no flip hint (Rose). Back links (Instagram handles, contact links) are clickable once flipped. Design-system values only: letter shadow = sticker-shadow, card fill (both faces) = surface-100 (Rose; no paper texture), box heading = heading-lg, letter padding 40 → space-8, message gap 14.973 → space-3, back gap 38 → space-8. Images: Figma's 2x exports of the hifi layers with rotation + sticker-shadow baked in, placed at the layer's bounding box minus the shadow spread (5.6 left, 3.6 top); portrait is a 3x export; back logo is Rose's 2x PNG (shadow included) as WebP. `public/images/about/_figma-export/convert.py` makes the WebPs.

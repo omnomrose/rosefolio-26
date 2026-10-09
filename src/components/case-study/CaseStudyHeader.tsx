@@ -35,12 +35,12 @@ export default function CaseStudyHeader({ meta }: { meta: CaseStudyMeta }) {
 }
 
 function Hero({ hero }: { hero: CaseStudyHero }) {
-  // Figma: 927 × 413 (content width inside the 72px side padding).
-  const box = "aspect-[927/413]";
+  // 975 × 413: content width inside the 48px side padding, Figma's 413 hero height kept.
+  const box = "aspect-[975/413]";
   if (hero.kind === "photo") {
     return (
       <div className={`relative w-full overflow-hidden ${box}`}>
-        <Image src={hero.src} alt={hero.alt} fill priority sizes="(min-width: 1512px) 927px, 62vw" className="object-cover" />
+        <Image src={hero.src} alt={hero.alt} fill priority sizes="(min-width: 1512px) 975px, 65vw" className="object-cover" />
       </div>
     );
   }
@@ -48,7 +48,7 @@ function Hero({ hero }: { hero: CaseStudyHero }) {
   // box (573.568 × 394.59 at 213, 18 inside 999 × 413), cropped the same way (122.3% wide, −11.15%).
   return (
     <div className={`relative w-full overflow-hidden ${box}`}>
-      <Image src={hero.background} alt="" fill priority sizes="(min-width: 1512px) 927px, 62vw" className="object-cover" />
+      <Image src={hero.background} alt="" fill priority sizes="(min-width: 1512px) 975px, 65vw" className="object-cover" />
       <div className="absolute bottom-0 left-[21.32%] aspect-[573.568/394.59] h-[95.54%] overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={hero.overlay} alt={hero.alt} className="absolute top-0 left-[-11.15%] h-full w-[122.3%] max-w-none" />

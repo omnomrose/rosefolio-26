@@ -197,7 +197,7 @@ export function Body() {
             src={img("merch-stickers")}
             alt="Clear bag of Mitchie Matcha stickers: green bubble-letter logos and a matcha whisk"
             className="col-span-2 aspect-[999/656.486]"
-            sizes="(min-width: 1512px) 927px, 62vw"
+            sizes="(min-width: 1512px) 975px, 65vw"
           />
         </div>
       </TabPanel>
