@@ -223,7 +223,7 @@ Decisions from Rose:
   - Context + Problem text blocks are 666 wide (Figma 1158:2601).
   - TLDR (1208:296): "TLDR..." label-lg eyebrow → 12 → closing body/16 paragraph, 48 below the cards.
   - Not built: 1205:288, a title-xl line under COMMON PAIN POINTS. Its copy duplicates the Context quote (placeholder?); waiting on Rose's copy.
-  - Kept the shared rhythm over this frame's new gaps (72 between Context/Problem, 16/24 inside heading blocks, 28 above the cards).
+  - Spacing follows Rose's fixed Figma spacing (1211:299, Oct 8), not the shared rhythm: heading blocks label → title 16 (space-3), title → body 24 (space-5); sections 72 (space-16); How-might box 76 (space-17) above and below; video → buttons 32 (space-7); takeaway title → paragraph 8, heading → cards 36 (space-8), cards (304 wide, centred) → TLDR 48. Off-token values snapped: text → logos 54 → 48, logos → pain points 67 → 68 (space-15), How-might → video 80 → 76, takeaway label → title 10 → 8, card gap 23 → 24.
   - Hero is the 999 × 377 `background` layer cropped into the shared hero box (Rose).
   - Images: Rose's 2x layer exports in `public/images/work/ar-glasses-retail/_figma-export/`, converted by `convert.py`.
   - Videos: Rose's `Employee-1.mp4` (4K) → `restock.mp4` (1280px H.264, no audio) + `restock-poster.webp`. The home card's `ar-glasses.mp4` is another restock take, not cross-check. Cross-check: Rose's `Employee-2.mp4` (Pop Mart, nearby-store stock check) → `cross-check.mp4` + `cross-check-poster.webp`, same settings.

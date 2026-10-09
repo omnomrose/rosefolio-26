@@ -60,6 +60,12 @@ const videos = [
   },
 ];
 
+/*
+ * Spacing follows Figma 1211:299 (Rose, Oct 8): heading blocks 16 / 24, sections 72, How-might 76,
+ * video → buttons 32, takeaway heading → cards 36, cards → TLDR 48. Off-token gaps snapped:
+ * text → logos 54 → 48, logos → pain points 67 → 68, How-might → video 80 → 76,
+ * takeaway label → title 10 → 8, card gap 23 → 24.
+ */
 export function Body() {
   return (
     <>
@@ -69,16 +75,16 @@ export function Body() {
           id="context-heading"
           label="Context"
           title="“Technology is advancing, but how is it being used to adapt in specific areas in our society?”"
-          gap="gap-space-1"
+          gap="gap-space-3"
         />
-        <p className="type-body-16 mt-space-3 text-surface-200">
+        <p className="type-body-16 mt-space-5 text-surface-200">
           This question was a topic frequently discussed within my Frontiers of Technology in Innovation class. The
           challenge was figuring out what existing technology could be applied to improve society.
         </p>
       </section>
 
       {/* PROBLEM: common pain points (973:2573), logos (1158:2589), pain points (1158:2600), how might (973:2577) */}
-      <section id="problem" tabIndex={-1} aria-labelledby="problem-heading" className="mt-space-17 outline-none">
+      <section id="problem" tabIndex={-1} aria-labelledby="problem-heading" className="mt-space-16 outline-none">
         <div className="flex w-[666px] max-w-full flex-col gap-space-3">
           <h2 id="problem-heading" className="type-label-lg text-surface-150 uppercase">
             Common pain points
@@ -98,7 +104,7 @@ export function Body() {
         </ul>
 
         {/* 1158:2600: 931-wide group, 32px apart (space-7), centred, bottom-aligned. */}
-        <div className="mt-space-11 flex w-full items-end justify-center gap-space-7">
+        <div className="mt-space-15 flex w-full items-end justify-center gap-space-7">
           <PainPoint image={img("pain-restock")} alt="Halftone illustration of an open cardboard box" width={213} height={172} captionWidth={267}>
             Incoming Shipments/Restock:
             <br />
@@ -128,7 +134,7 @@ export function Body() {
           </PainPoint>
         </div>
 
-        <HowMightCard className="mt-space-11">
+        <HowMightCard className="mt-space-17">
           Wearable tech was expanding faster than ever, and it made me wonder:
           <br />
           How might AR help Retail Workers in High-Traffic Malls with their Shifts?
@@ -141,7 +147,7 @@ export function Body() {
       </section>
 
       {/* TAKEAWAYS (973:2583, cards 973:2594, closing 973:2582) */}
-      <section id="takeaways" tabIndex={-1} aria-labelledby="takeaways-heading" className="mt-space-17 outline-none">
+      <section id="takeaways" tabIndex={-1} aria-labelledby="takeaways-heading" className="mt-space-16 outline-none">
         <div className="w-[805px] max-w-full">
           <SectionHeading
             id="takeaways-heading"
@@ -149,23 +155,23 @@ export function Body() {
             title="Establishing moral grounds is a must with evolving technology."
             gap="gap-space-1"
           />
-          <p className="type-body-16 mt-space-3 text-surface-150">
+          <p className="type-body-16 mt-space-1 text-surface-150">
             As someone who’s worked in fast-paced environments (retail/food services), I could see how these glasses
             could be beneficial if used without ill intentions. However, I could also see how it could be used to
             micromanage and possibly displace employees.
           </p>
         </div>
 
-        <div className="mt-space-11 flex w-full items-stretch gap-space-5">
-          <TakeawayCard variant="outlined" title="Normalizes Invasion of Privacy" className="min-w-0 flex-1">
+        <div className="mt-space-8 flex w-full items-stretch justify-center gap-space-5">
+          <TakeawayCard variant="outlined" title="Normalizes Invasion of Privacy" className="w-[304px] min-w-0">
             Customers did not consent to being observed through a worker&apos;s VR/AR glasses. Even without bad intent,
             features such as product scanning could accidentally capture customer faces or behaviour.
           </TakeawayCard>
-          <TakeawayCard variant="outlined" title="Accessibility at the Forefront" className="min-w-0 flex-1">
+          <TakeawayCard variant="outlined" title="Accessibility at the Forefront" className="w-[304px] min-w-0">
             Workers who have visual impairments or sensory sensitivities might not be able to wear the glasses for a
             full shift, which can negatively impact their job performance.
           </TakeawayCard>
-          <TakeawayCard variant="outlined" title="Risks of Cognitive Offloading" className="min-w-0 flex-1">
+          <TakeawayCard variant="outlined" title="Risks of Cognitive Offloading" className="w-[304px] min-w-0">
             With how all knowledge is condensed into one dashboard, it made me wonder: if anyone could put on these
             glasses as a way to rely on product knowledge, then what makes a “good employee”?
           </TakeawayCard>

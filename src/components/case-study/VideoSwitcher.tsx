@@ -6,7 +6,7 @@ export type SwitcherVideo = { id: string; label: string; src: string; poster?: s
 
 /*
  * Solution media (AR Glasses 1158:2591): a 999 × 562 video box (radius-1) with toggle buttons
- * 24px below (space-5). Buttons (973:2578 / 973:2580): 273 wide, one shared surface-200 stroke
+ * 32px below (space-7, Figma 1211:299). Buttons (973:2578 / 973:2580): 273 wide, one shared surface-200 stroke
  * (no doubled divider), label-lg (Geist Mono) uppercase surface-200. Hover + selected = primary-100 fill (Rose).
  * Videos always play, muted and looping, including for reduced-motion users (Rose).
  */
@@ -16,7 +16,7 @@ export default function VideoSwitcher({ videos, label }: { videos: SwitcherVideo
   const video = videos[active];
 
   return (
-    <div className="flex w-full flex-col items-center gap-space-5">
+    <div className="flex w-full flex-col items-center gap-space-7">
       <div id={`${uid}-media`} className="relative aspect-[999/562] w-full overflow-hidden rounded-1 bg-surface-110">
         <video
           key={video.id}
