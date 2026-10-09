@@ -77,6 +77,14 @@
   line-height: normal;
   letter-spacing: -0.02em;
 }
+/* desktop/heading-xl (Fridge 1221:288). */
+@utility type-heading-xl {
+  font-family: var(--font-pixel);
+  font-size: 50px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.05em;
+}
 @utility type-heading-md {
   font-family: var(--font-pixel);
   font-size: 24px;
