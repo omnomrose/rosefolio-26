@@ -67,7 +67,8 @@ export const caseStudies: CaseStudy[] = [
     description:
       "An AR glasses concept that helps retail workers with product knowledge, inventory, and restock cycles.",
     size: "small",
-    cursor: "COMING SOON",
+    href: "/work/ar-glasses-retail",
+    cursor: "VIEW CASE STUDY",
     cover: {
       kind: "video",
       src: "/images/work/ar-glasses.mp4",

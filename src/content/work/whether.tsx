@@ -3,6 +3,7 @@ import { SectionHeading } from "@/components/case-study/SectionHeading";
 import ProblemCard from "@/components/case-study/ProblemCard";
 import FeatureShowcase from "@/components/case-study/FeatureShowcase";
 import TakeawayCard from "@/components/case-study/TakeawayCard";
+import HowMightCard from "@/components/case-study/HowMightCard";
 
 // Figma: "Whether | Case Study #1" (973:1879).
 export const meta: CaseStudyMeta = {
@@ -106,11 +107,9 @@ export function Body() {
           />
         </div>
 
-        <div className="mt-space-11 flex w-full items-center justify-center rounded-1 border border-surface-50 px-space-2 py-space-4">
-          <p className="type-label-lg w-[555px] max-w-full text-center text-surface-150 uppercase">
-            How might I guide the process of coming up with potential outfits for people on a time crunch?
-          </p>
-        </div>
+        <HowMightCard className="mt-space-11">
+          How might I guide the process of coming up with potential outfits for people on a time crunch?
+        </HowMightCard>
       </section>
 
       {/* SOLUTION (1029:1720) */}

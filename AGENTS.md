@@ -32,7 +32,7 @@ Rose Nguyen's product design portfolio. It's a fresh Next.js build from a finish
 | `/about` | About me | ✅ |
 | `/work/whether` | Case study: Whether | ✅ |
 | `/work/mitchie-matcha` | Case study: Mitchie Matcha | ✅ |
-| `/work/ar-glasses-retail` | Case study: AR Glasses for Retail | later |
+| `/work/ar-glasses-retail` | Case study: AR Glasses for Retail | ✅ |
 | `/work/still` | Case study: Still | later |
 | `/fridge` | Playground: open canvas of other works and interests | later |
 
@@ -171,7 +171,7 @@ Every case study uses the same shell. Reference: Whether (Figma 973:1879, sideba
 | Nav (CONTENTS block) | Figma 1129:2538: "CONTENTS" label, then 01 [WORK] / 02 [ABOUT] / 03 [FRIDGE], all Geist Mono 14 (caption). Active = primary-200 square + surface-200 text; inactive = surface-150; dividers surface-10. Hovering the active [WORK] tab expands the case study list (Geist Mono, uppercase); rows highlight on hover (surface-110 fill, surface-200 text). Identity→nav gap 16, nav→player gap 44 (1110:2459). | Sidebar (home, about, fridge) |
 | Fridge canvas | Open canvas of works and interests (spec TBD) | Fridge |
 | Custom cursor | Site-wide 15×15 primary-200 square (Rose resized from Figma node 1040:2267) that follows the mouse smoothly (GSAP lerp) at all times. | Global |
-| Case study cursor | On card hover, the cursor becomes a label frame. Whether and Mitchie Matcha: "VIEW CASE STUDY". AR Glasses: "COMING SOON". Still: "VIEW DESIGNATHON". Label frames: nodes 1036:2253, 1038:2261, 1038:2264. | Home |
+| Case study cursor | On card hover, the cursor becomes a label frame. Whether, Mitchie Matcha and AR Glasses: "VIEW CASE STUDY". Still: "VIEW DESIGNATHON". Label frames: nodes 1036:2253, 1038:2261, 1038:2264. | Home |
 
 Motion rules:
 - Respect `prefers-reduced-motion`: turn off smooth scroll, tilt, and spinning, and make the flip instant.
@@ -212,7 +212,14 @@ Decisions from Rose:
 - Mitchie Matcha (973:19999 / 973:20089 / 973:20168): one page, three tabs (`meta.navigation: "tabs"`). The side nav switches tabs (URL hash = tab id); header details (415:3331 / 754:1048 / 767:1460) and image grid swap per tab; CONTEXT is shared. "/METRICS" dropped from the first tab label until metrics exist. Previous → Whether, next → AR Glasses.
 - One header size for every case study (Whether's): hero 999 × 413, 172px title column, 668px details row.
 - Case study images are Figma's own 2x PNG renders of each image layer (crops + image adjustments baked in), converted to WebP. The 20 Mitchie layers carry 2x PNG export settings; `public/images/work/mitchie-matcha/_figma-export/convert.py` maps layer names → WebP files.
-- AR Glasses for Retail: placeholder page in the case study shell (nav "Coming soon", empty panel).
+- AR Glasses for Retail (973:2419; Figma calls it "AR/VR for Retail" — title stays "AR Glasses for Retail", Rose): scroll mode, Context / Problem / Solution / Takeaways. Previous → Mitchie Matcha, next disabled until Still has a page. Home card links here with "VIEW CASE STUDY".
+  - Shared rhythm applied over Figma's mixed gaps (60/44/77/81/69/97). Logos 60 apart (space-13); pain points 32 apart (space-7), bottom-aligned, image → caption space-5; takeaway cards space-5 apart (Figma 23) so titles fit one line.
+  - Pain-point captions are DM Sans 16.117 / #1c1f23 in Figma → body/16 surface-200.
+  - "How might AR…" reuses Whether's box (`HowMightCard`, Rose).
+  - Solution: `VideoSwitcher` — 999 × 562 video (radius-1), RESTOCK / CROSS-CHECK INVENTORY buttons 24 below (space-5). Hover + selected = primary-100 fill, surface-200 text (Rose). Videos always play, muted, looping.
+  - Takeaway cards use the shared `TakeawayCard` (surface-10 stroke, 16 padding) instead of Figma's surface-200 stroke / 12 padding / fixed 185 height.
+  - Hero is the 999 × 377 `background` layer cropped into the shared 927 × 413 box (Rose).
+  - Images: Rose's 2x layer exports in `public/images/work/ar-glasses-retail/_figma-export/`, converted by `convert.py`.
 - About (973:1160; letter back 1100:2442): collage pinned to the content-area centre (positions in `src/content/about.ts`). Stickers and box items are draggable (GSAP Draggable): they follow the pointer 1:1 — no bounds, lift or easing — and stay where dropped. Letter tilts subtly (max 4°) and flips on click/Enter/Space; no flip hint (Rose). Back links (Instagram handles, contact links) are clickable once flipped. Design-system values only: letter shadow = sticker-shadow, card fill (both faces) = surface-100 (Rose; no paper texture), box heading = heading-lg, letter padding 40 → space-8, message gap 14.973 → space-3, back gap 38 → space-8. Images: Figma's 2x exports of the hifi layers with rotation + sticker-shadow baked in, placed at the layer's bounding box minus the shadow spread (5.6 left, 3.6 top); portrait is a 3x export; back logo is Rose's 2x PNG (shadow included) as WebP. `public/images/about/_figma-export/convert.py` makes the WebPs.
 
 - Sidebar fit (Rose): below 908px viewport height the main sidebar compacts (smaller gaps, vinyl/covers scale via `--player-row`, min 160px) so contact links show without scrolling. Figma sizes apply at ≥908px.
@@ -223,6 +230,8 @@ Decisions from Rose:
 2. ~~Still card link~~ Decided: https://devpost.com/software/still-s1u0qt (opens in a new tab).
 3. ~~Frame node IDs~~ About: 973:1160. Mitchie Matcha: 973:19999. Whether: 973:1879.
 4. Fridge canvas behavior (later).
+5. Figma variable `radius/radius-4` = 16 on the AR Glasses frame (used as a gap), but the theme's `--radius-4` is 12. Which is right?
+6. AR Glasses frame uses `label/14` (Geist Mono 14, 141%) and `desktop/label-md` (Geist Mono 14, 100%) for the header labels; the shared header keeps `type-caption`. Add them as tokens?
 <!-- BEGIN:nextjs-agent-rules -->
 
 # This is NOT the Next.js you know
