@@ -1,21 +1,33 @@
 import type { ReactNode } from "react";
 
-// Takeaway card (973:1946 / 973:1949): surface-100 fill, surface-10 stroke, body/16 copy.
+/*
+ * Takeaway card.
+ * - "soft" (Whether 973:1946 / 973:1949): surface-10 stroke, 16 padding, body/16 copy.
+ * - "outlined" (AR Glasses 973:2595, Oct 8): surface-200 stroke, radius-1, 20 padding (space-4),
+ *   12 gap (space-2), body-md copy.
+ */
 export default function TakeawayCard({
   title,
   children,
   className = "",
+  variant = "soft",
 }: {
   title: string;
   children: ReactNode;
   className?: string;
+  variant?: "soft" | "outlined";
 }) {
+  const outlined = variant === "outlined";
   return (
     <div
-      className={`flex flex-col gap-space-3 rounded-1 border border-surface-10 bg-surface-100 p-space-3 ${className}`}
+      className={`flex flex-col bg-surface-100 ${
+        outlined
+          ? "gap-space-2 rounded-1 border border-surface-200 p-space-4"
+          : "gap-space-3 rounded-1 border border-surface-10 p-space-3"
+      } ${className}`}
     >
       <h3 className="type-title-lg text-surface-200">{title}</h3>
-      <p className="type-body-16 text-surface-150">{children}</p>
+      <p className={`${outlined ? "type-body-md" : "type-body-16"} text-surface-150`}>{children}</p>
     </div>
   );
 }

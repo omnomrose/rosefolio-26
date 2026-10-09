@@ -64,7 +64,7 @@ export function Body() {
   return (
     <>
       {/* CONTEXT (973:2568) */}
-      <section id="context" tabIndex={-1} aria-labelledby="context-heading" className="mt-space-11 w-[787px] max-w-full outline-none">
+      <section id="context" tabIndex={-1} aria-labelledby="context-heading" className="mt-space-11 w-[666px] max-w-full outline-none">
         <SectionHeading
           id="context-heading"
           label="Context"
@@ -79,7 +79,7 @@ export function Body() {
 
       {/* PROBLEM: common pain points (973:2573), logos (1158:2589), pain points (1158:2600), how might (973:2577) */}
       <section id="problem" tabIndex={-1} aria-labelledby="problem-heading" className="mt-space-17 outline-none">
-        <div className="flex w-[787px] max-w-full flex-col gap-space-3">
+        <div className="flex w-[666px] max-w-full flex-col gap-space-3">
           <h2 id="problem-heading" className="type-label-lg text-surface-150 uppercase">
             Common pain points
           </h2>
@@ -129,8 +129,9 @@ export function Body() {
         </div>
 
         <HowMightCard className="mt-space-11">
-          Wearable tech was expanding faster than ever, and it made me wonder: How might AR help Retail Workers in
-          High-Traffic Malls with their Shifts?
+          Wearable tech was expanding faster than ever, and it made me wonder:
+          <br />
+          How might AR help Retail Workers in High-Traffic Malls with their Shifts?
         </HowMightCard>
       </section>
 
@@ -156,25 +157,29 @@ export function Body() {
         </div>
 
         <div className="mt-space-11 flex w-full items-stretch gap-space-5">
-          <TakeawayCard title="Normalizes Invasion of Privacy" className="min-w-0 flex-1">
+          <TakeawayCard variant="outlined" title="Normalizes Invasion of Privacy" className="min-w-0 flex-1">
             Customers did not consent to being observed through a worker&apos;s VR/AR glasses. Even without bad intent,
             features such as product scanning could accidentally capture customer faces or behaviour.
           </TakeawayCard>
-          <TakeawayCard title="Accessibility at the Forefront" className="min-w-0 flex-1">
+          <TakeawayCard variant="outlined" title="Accessibility at the Forefront" className="min-w-0 flex-1">
             Workers who have visual impairments or sensory sensitivities might not be able to wear the glasses for a
-            full shift, which can negatively impact their job performance
+            full shift, which can negatively impact their job performance.
           </TakeawayCard>
-          <TakeawayCard title="Risks of Cognitive Offloading" className="min-w-0 flex-1">
+          <TakeawayCard variant="outlined" title="Risks of Cognitive Offloading" className="min-w-0 flex-1">
             With how all knowledge is condensed into one dashboard, it made me wonder: if anyone could put on these
             glasses as a way to rely on product knowledge, then what makes a “good employee”?
           </TakeawayCard>
         </div>
 
-        <p className="type-body-16 mt-space-11 text-surface-200">
-          While I believe technology can be a tool that can help us in our daily lives, I also think we have to be
-          intentional with the way we interact with it – what results we expect from using it and, in turn, how it
-          affects the people around us.
-        </p>
+        {/* TLDR (1208:296): label → copy 12 (space-2). */}
+        <div className="mt-space-11 flex flex-col gap-space-2">
+          <h3 className="type-label-lg text-surface-150 uppercase">TLDR...</h3>
+          <p className="type-body-16 text-surface-200">
+            While I believe technology can be a tool that can help us in our daily lives, I also think we have to be
+            intentional with the way we interact with it – what results we expect from using it and, in turn, how it
+            affects the people around us.
+          </p>
+        </div>
       </section>
     </>
   );

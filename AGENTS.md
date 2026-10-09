@@ -216,9 +216,14 @@ Decisions from Rose:
 - AR Glasses for Retail (973:2419; Figma calls it "AR/VR for Retail" — title stays "AR Glasses for Retail", Rose): scroll mode, Context / Problem / Solution / Takeaways. Previous → Mitchie Matcha, next disabled until Still has a page. Home card links here with "VIEW CASE STUDY".
   - Shared rhythm applied over Figma's mixed gaps (60/44/77/81/69/97). Logos 60 apart (space-13); takeaway cards space-5 apart (Figma 23) so titles fit one line.
   - Pain points (1158:2600, Rose Oct 8): 931-wide group centred, 32 apart (space-7), bottom-aligned; columns 267 / 300 / 300 = caption width, illustration centred above, image → caption space-5. Captions are left-aligned desktop/body-xl (100% line height, not body/16) in surface-200 (Figma's #1c1f23 "black"); `<wbr />` after "promotions/" to match Figma's line break.
-  - "How might AR…" reuses Whether's box (`HowMightCard`, Rose).
+  - "How might AR…" reuses Whether's box (`HowMightCard`, Rose). Restyled Oct 8 from 1207:291 (applies to Whether too): surface-100 fill, surface-30 stroke, 12 × 20 padding, sentence case, title-xl surface-150 centred (Figma's 24/141% has no text style; title-xl used).
   - Solution: `VideoSwitcher` — 999 × 562 video (radius-1), RESTOCK / CROSS-CHECK INVENTORY buttons 24 below (space-5). Hover + selected = primary-100 fill, surface-200 text (Rose). Videos always play, muted, looping.
-  - Takeaway cards use the shared `TakeawayCard` (surface-10 stroke, 16 padding) instead of Figma's surface-200 stroke / 12 padding / fixed 185 height.
+  - Takeaway cards (973:2594, Oct 8): `TakeawayCard variant="outlined"` — surface-200 stroke, radius-1, 20 padding (space-4), title → copy 12 (space-2), copy body-md surface-150. Whether keeps the "soft" variant.
+  - Solution buttons share one stroke (no doubled divider between them), Geist Mono via label-lg.
+  - Context + Problem text blocks are 666 wide (Figma 1158:2601).
+  - TLDR (1208:296): "TLDR..." label-lg eyebrow → 12 → closing body/16 paragraph, 48 below the cards.
+  - Not built: 1205:288, a title-xl line under COMMON PAIN POINTS. Its copy duplicates the Context quote (placeholder?); waiting on Rose's copy.
+  - Kept the shared rhythm over this frame's new gaps (72 between Context/Problem, 16/24 inside heading blocks, 28 above the cards).
   - Hero is the 999 × 377 `background` layer cropped into the shared hero box (Rose).
   - Images: Rose's 2x layer exports in `public/images/work/ar-glasses-retail/_figma-export/`, converted by `convert.py`.
   - Videos: Rose's `Employee-1.mp4` (4K) → `restock.mp4` (1280px H.264, no audio) + `restock-poster.webp`. The home card's `ar-glasses.mp4` is another restock take, not cross-check. Cross-check: Rose's `Employee-2.mp4` (Pop Mart, nearby-store stock check) → `cross-check.mp4` + `cross-check-poster.webp`, same settings.

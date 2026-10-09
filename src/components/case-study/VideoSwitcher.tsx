@@ -6,8 +6,8 @@ export type SwitcherVideo = { id: string; label: string; src: string; poster?: s
 
 /*
  * Solution media (AR Glasses 1158:2591): a 999 × 562 video box (radius-1) with toggle buttons
- * 24px below (space-5). Buttons (973:2578 / 973:2580): 273 wide, surface-200 stroke,
- * label-lg uppercase surface-200. Hover + selected = primary-100 fill (Rose).
+ * 24px below (space-5). Buttons (973:2578 / 973:2580): 273 wide, one shared surface-200 stroke
+ * (no doubled divider), label-lg (Geist Mono) uppercase surface-200. Hover + selected = primary-100 fill (Rose).
  * Videos always play, muted and looping, including for reduced-motion users (Rose).
  */
 export default function VideoSwitcher({ videos, label }: { videos: SwitcherVideo[]; label: string }) {
@@ -42,7 +42,7 @@ export default function VideoSwitcher({ videos, label }: { videos: SwitcherVideo
               aria-pressed={selected}
               aria-controls={`${uid}-media`}
               onClick={() => setActive(i)}
-              className={`type-label-lg w-[273px] border border-surface-200 px-space-2 py-space-2 text-center whitespace-nowrap text-surface-200 uppercase transition-colors hover:bg-primary-100 ${
+              className={`type-label-lg w-[273px] border border-surface-200 ${i > 0 ? "border-l-0" : ""} px-space-2 py-space-2 text-center whitespace-nowrap text-surface-200 uppercase transition-colors hover:bg-primary-100 ${
                 selected ? "bg-primary-100" : ""
               }`}
             >
