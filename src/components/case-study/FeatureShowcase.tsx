@@ -76,7 +76,7 @@ export default function FeatureShowcase({
     "flex size-[40px] items-center justify-center rounded-8 border border-surface-150 bg-surface-100 p-[10px] text-surface-150 transition-colors hover:border-primary-300 hover:text-primary-300";
 
   return (
-    <div className="flex w-full items-start justify-between gap-space-8">
+    <div className="flex w-full items-start justify-center gap-space-12">
       <div className="flex w-[420px] min-w-0 flex-col gap-[91px]">
         {intro}
 
@@ -134,9 +134,9 @@ export default function FeatureShowcase({
         </div>
       </div>
 
-      {/* Prototype slot (973:1940, 383 × 634). The demo's ?embed=1 mode renders just the
+      {/* Prototype slot (973:1940, 431 × 634). The demo's ?embed=1 mode renders just the
           phone (393:852) on a transparent page, so the iframe is sized to that ratio and centred. */}
-      <div className="relative flex h-[634px] w-[383px] shrink-0 justify-center">
+      <div className="relative flex h-[634px] w-[431px] shrink-0 justify-center">
         <iframe
           ref={iframeRef}
           src={`${demoUrl}?embed=1#${features[0].hash}`}

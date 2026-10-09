@@ -91,6 +91,7 @@ Use these names exactly. Map them into the Tailwind theme with names that mirror
 | space-9 | 40 |
 | space-10 | 44 |
 | space-11 | 48 |
+| space-12 | 56 |
 | space-13 | 60 |
 | space-15 | 68 |
 | space-16 | 72 |
@@ -107,7 +108,7 @@ Use these names exactly. Map them into the Tailwind theme with names that mirror
 | caption-sm | Geist Mono Regular | 12 | 100% | 0 |
 | title-xl | Geist Regular | 24 | 100% | 0 |
 | title-lg | Geist Medium | 18 | 100% | 0 |
-| label-lg | Geist Regular | 16 | 100% | 0 |
+| label-lg | Geist Mono Regular | 16 | 100% | 0 |
 | body/16 (`type-body-16`) | Geist Regular | 16 | 141% | 0 |
 
 All type tokens are weight 400. Letter spacing values are percentages (confirmed).
