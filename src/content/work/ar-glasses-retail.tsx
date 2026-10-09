@@ -43,7 +43,6 @@ const logos = [
 ];
 
 // Solution media (973:2576). Rose's clips, converted to 1280px H.264 (muted, looping) + poster frame.
-// TODO(Rose): cross-check clip pending (the Pop Mart shelf in Figma) → cross-check.mp4 + cross-check-poster.webp.
 const videos = [
   {
     id: "restock",
@@ -56,7 +55,8 @@ const videos = [
     id: "cross-check",
     label: "Cross-check inventory",
     src: "/images/work/ar-glasses-retail/cross-check.mp4",
-    alt: "Point-of-view video of AR glasses cross-checking stock for a product at another store",
+    poster: img("cross-check-poster"),
+    alt: "Point-of-view video of AR glasses at a Pop Mart display: a low-stock alert checks nearby stores and shows which one has the product in stock",
   },
 ];
 
