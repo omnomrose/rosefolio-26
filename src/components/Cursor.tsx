@@ -5,15 +5,20 @@ import { usePathname } from "next/navigation";
 import { gsap } from "gsap";
 import { EyeIcon } from "./Icons";
 
-type CursorContextValue = { setLabel: (label: string | null) => void };
+type CursorContextValue = {
+  setLabel: (label: string | null) => void;
+  /** While true the square sits exactly on the pointer (no trail), e.g. while dragging a sticker. */
+  setPinned: (pinned: boolean) => void;
+};
 
-const CursorContext = createContext<CursorContextValue>({ setLabel: () => {} });
+const CursorContext = createContext<CursorContextValue>({ setLabel: () => {}, setPinned: () => {} });
 
 export const useCursorLabel = () => useContext(CursorContext);
+export const useCursor = () => useContext(CursorContext);
 
 /*
  * Site-wide custom cursor (Figma node 1040:2267): a 15×15 primary-200 square (Rose: smaller than Figma's 26×26)
- * that trails the pointer smoothly. Over a case study card it morphs into the
+ * that trails the pointer smoothly (pinned to it while something is being dragged). Over a case study card it morphs into the
  * label frame (nodes 1036:2253 / 1038:2261 / 1038:2264).
  */
 export default function CursorProvider({ children }: { children: ReactNode }) {
@@ -26,6 +31,10 @@ export default function CursorProvider({ children }: { children: ReactNode }) {
   const rootRef = useRef<HTMLDivElement | null>(null);
   const squareRef = useRef<HTMLDivElement | null>(null);
   const labelRef = useRef<HTMLDivElement | null>(null);
+  const pinnedRef = useRef(false);
+  const setPinned = useCallback((pinned: boolean) => {
+    pinnedRef.current = pinned;
+  }, []);
 
   // Keep the last label text so it doesn't blank out while fading away.
   const [labelText, setLabelText] = useState("");
@@ -52,8 +61,8 @@ export default function CursorProvider({ children }: { children: ReactNode }) {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const el = rootRef.current;
     // Reduced motion: snap to the pointer (quickTo with a 0 duration stops updating after the first call).
-    const xTo = reduced ? (x: number) => gsap.set(el, { x }) : gsap.quickTo(el, "x", { duration: 0.35, ease: "power3.out" });
-    const yTo = reduced ? (y: number) => gsap.set(el, { y }) : gsap.quickTo(el, "y", { duration: 0.35, ease: "power3.out" });
+    const xTo = reduced ? (x: number) => gsap.set(el, { x }) : gsap.quickTo(el, "x", { duration: 0.20, ease: "power3.out" });
+    const yTo = reduced ? (y: number) => gsap.set(el, { y }) : gsap.quickTo(el, "y", { duration: 0.20, ease: "power3.out" });
     let shown = false;
 
     const moveTo = (x: number, y: number) => {
@@ -64,6 +73,11 @@ export default function CursorProvider({ children }: { children: ReactNode }) {
       }
       xTo(x);
       yTo(y);
+      // Pinned: finish the trail instantly so whatever is held stays under the square.
+      if (pinnedRef.current) {
+        (xTo as gsap.QuickToFunc).tween?.progress(1);
+        (yTo as gsap.QuickToFunc).tween?.progress(1);
+      }
     };
     const onMove = (e: PointerEvent) => moveTo(e.clientX, e.clientY);
 
@@ -108,7 +122,7 @@ export default function CursorProvider({ children }: { children: ReactNode }) {
   }, [label]);
 
   return (
-    <CursorContext.Provider value={{ setLabel }}>
+    <CursorContext.Provider value={{ setLabel, setPinned }}>
       {children}
       {enabled && (
         <div
